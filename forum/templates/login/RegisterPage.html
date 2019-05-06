@@ -2,17 +2,17 @@
 
 {% block content %}
 
-    <h1>Registo</h1>
+    <h1> Registo </h1>
      <form name="input" action="MainPage.html" method="POST">
         {% csrf_token %}
 
-        Username: <input type="text" name="Username"><br>
+        Username: <input type="text" name="username"><br>
         email:  <input type="email" name="email"><br>
-        Password:  <input type="password" name="Password"><br>
-        Primeiro Nome: <input type="text" name="FirstName"><br>
-        Último Nome: <input type="text" name="LastName"><br>
-        Idade: <input type="number" name="Age"><br>
-        Foto: <input type="file" name="Photo"><br>
+        Password:  <input type="password" name="password"><br>
+        Primeiro Nome: <input type="text" name="first_name"><br>
+        Último Nome: <input type="text" name="last_name"><br>
+        Idade: <input type="number" name="age"><br>
+        Foto: <input type="file" name="pic"><br>
 
         <input type="submit" value="Submit">
      </form>

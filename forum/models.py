@@ -7,6 +7,7 @@ class ForumUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_pic = models.ImageField(null=True, blank=True)
     user_age = models.CharField(max_length=100)
+    user_likes = models.IntegerField(default=0)
 
 class Categorie(models.Model):
     categorie_title = models.CharField(max_length=100)
