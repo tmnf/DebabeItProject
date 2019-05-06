@@ -1,0 +1,16 @@
+{% extends "forum/Base.html" %}
+
+{% block content %}
+    <h1>Registo</h1>
+     <form name="input" action="MainPage.html" method="POST">
+        Username: <input type="text" name="Username"><br>
+        email:  <input type="text" name="email"><br>
+        Password:  <input type="text" name="Password"><br>
+        Primeiro Nome: <input type="text" name="FirstName"><br>
+        Último Nome: <input type="text" name="LastName"><br>
+        Idade: <input type="text" name="Age"><br>
+         Foto: <input type="file" name="Photo"><br>
+
+         <input type="submit" value="Submit">
+     </form>
+{% endblock content %}
