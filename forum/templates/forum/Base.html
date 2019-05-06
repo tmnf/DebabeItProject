@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title> DebateIt </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'forum/style.css' %}" />
+
+</head>
+<body>
+
+    <header class="MenuBar">
+
+        <picture>
+            <img  class="Logo" src="{% static 'forum/logo.png' %}">
+        </picture>
+
+        <nav>
+            <menu>
+                <ul class="Bar">
+                    <li class="bar_line"><a href="{% url "forum_home" %}"> Inicio </a></li>
+                    <li class="bar_line"><a href="{% url "forum_categories" %}"> Categorias </a></li>
+                    <li class="bar_line"><a href="{% url "forum_about" %}"> Sobre </a></li>
+                    <li class="bar_line"><a> Login </a></li>
+                </ul>
+            </menu>
+        </nav>
+
+    </header>
+
+    <section class="Content">
+        {% block content %}{% endblock content %}
+    </section>
+
+</body>
+</html>

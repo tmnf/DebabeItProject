@@ -1,0 +1,43 @@
+.MenuBar {
+    background-color: #333;
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.Logo{
+    float: right;
+    width: 200px;
+    margin-right: 20px;
+}
+
+.Bar {
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+.bar_line{
+    float: left;
+}
+
+.bar_line a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.bar_line a:hover {
+  background-color: #111;
+}
+
+.Content {
+    background-color: #555;
+    height: 100%;
+}
