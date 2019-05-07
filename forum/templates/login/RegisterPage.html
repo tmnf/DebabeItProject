@@ -3,7 +3,7 @@
 {% block content %}
 
     <h1> Registo </h1>
-     <form name="input" action="MainPage.html" method="POST">
+     <form name="input" action="{% url 'register_page' %}" method="POST">
         {% csrf_token %}
 
         Username: <input type="text" name="username"><br>

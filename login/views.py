@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse, include
 from .LoginHandle.LoginUtils import RegisterUser
-from .Forms import RegisterForm
 
 # Create your views here.
 
@@ -19,8 +18,7 @@ def RegisterPage(request):
         password = request.POST['password']
         age = request.POST['age']
 
-        RegisterUser(username,first_name, last_name, email, password, age)
-
-        return
+        if RegisterUser(username,first_name, last_name, email, password, age):
+            return HttpResponseRedirect(reverse('forum_home'))
 
     return render(request, "login/RegisterPage.html");
