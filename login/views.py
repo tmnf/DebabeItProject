@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
-from .LoginHandle.LoginUtils import RegisterUser, UploadPicture, LoginUser
+from .LoginHandle.LoginUtils import RegisterUser, UploadPicture, LoginUser, Logout
 
 
 # Create your views here.
@@ -38,3 +38,8 @@ def RegisterPage(request):
             return HttpResponseRedirect(reverse('forum_home'))
 
     return render(request, "login/RegisterPage.html");
+
+
+def logout(request):
+    if Logout(request):
+        return HttpResponseRedirect(reverse('forum_home'))

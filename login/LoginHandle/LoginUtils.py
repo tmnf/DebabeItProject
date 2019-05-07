@@ -1,6 +1,6 @@
 # This Class Handles User Authentication #
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
@@ -16,6 +16,13 @@ def LoginUser(username, password, request):
     else:
         return False
 
+
+def Logout(request):
+    try:
+        logout(request)
+        return True
+    except:
+        return False
 
 def RegisterUser(username, first_name, last_name, email, password, age, pic_url):
     try:
