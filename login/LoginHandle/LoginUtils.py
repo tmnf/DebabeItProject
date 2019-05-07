@@ -1,9 +1,19 @@
 # This Class Handles User Authentication #
 
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
 from forum.models import ForumUser
+
+
+def LoginUser(username, password):
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        return True
+    else:
+        return False
 
 
 def RegisterUser(username, first_name, last_name, email, password, age, pic_url):

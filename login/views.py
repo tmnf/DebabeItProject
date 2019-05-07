@@ -1,12 +1,21 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
-from .LoginHandle.LoginUtils import RegisterUser, UploadPicture
+from .LoginHandle.LoginUtils import RegisterUser, UploadPicture, LoginUser
 
 
 # Create your views here.
 
 def LoginPage(request):
+    if request.method == "POST":
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if username != '' and password != '':
+            if LoginUser(username, password):
+                return HttpResponseRedirect(reverse('forum_home'))
+
     return render(request, "login/LoginPage.html")
 
 def RegisterPage(request):
