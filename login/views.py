@@ -26,6 +26,6 @@ def RegisterPage(request):
             pic_url = None
 
         if RegisterUser(username, first_name, last_name, email, password, age, pic_url):
-            return HttpResponseRedirect(reverse('forum_home'), {'register_sucess': "Registado com Sucesso"})
+            return HttpResponseRedirect(reverse('forum_home'))
 
     return render(request, "login/RegisterPage.html");

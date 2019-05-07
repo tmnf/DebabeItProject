@@ -18,7 +18,6 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url)
 
         return True
     except:
-
         return False
 
 
