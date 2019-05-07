@@ -5,7 +5,6 @@
     <h1> Registo </h1>
     <form action="{% url 'register_page' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
-        # CAMPOS VALUE SO PARA TESTE
         Username:
         <input type="text" name="username"><br>
         email:
