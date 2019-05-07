@@ -13,7 +13,7 @@ def LoginPage(request):
         password = request.POST['password']
 
         if username != '' and password != '':
-            if LoginUser(username, password):
+            if LoginUser(username, password, request):
                 return HttpResponseRedirect(reverse('forum_home'))
 
     return render(request, "login/LoginPage.html")
