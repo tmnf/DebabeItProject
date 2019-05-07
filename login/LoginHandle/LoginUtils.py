@@ -16,7 +16,6 @@ def LoginUser(username, password, request):
     else:
         return False
 
-
 def Logout(request):
     try:
         logout(request)
