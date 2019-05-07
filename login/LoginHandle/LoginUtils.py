@@ -3,16 +3,12 @@
 from django.contrib.auth.models import User
 from forum.models import ForumUser
 
-def RegisterUser(username, first_name, last_name, email, age, password):
+def RegisterUser(username, first_name, last_name, email, password, age):
 
-    try:
-        user = User.objects.create_user(username, email, password)
-        user.first_name = first_name
-        user.last_name = last_name
-        user.save()
+    us = User.objects.create_user(username,email,password)
+    us.first_name =first_name
+    us.last_name= last_name
 
-        ForumUser.objects.create(user=user, user_age=age)
+    us.save()
 
-        return True
-    except:
-        return False
+    ForumUser.objects.create(user=us, user_age=age)

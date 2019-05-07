@@ -5,5 +5,4 @@ urlpatterns = [
     path('', views.MainPage, name='forum_home'),
     path('categories/', views.CategoriesPage, name='forum_categories'),
     path('about/', views.AboutPage, name='forum_about'),
-    path('auth/', include("login.urls"))
 ]

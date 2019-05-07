@@ -20,10 +20,11 @@
         <nav>
             <menu>
                 <ul class="Bar">
-                    <li class="bar_line"><a href="{% url "forum_home" %}"> Inicio </a></li>
-                    <li class="bar_line"><a href="{% url "forum_categories" %}"> Categorias </a></li>
-                    <li class="bar_line"><a href="{% url "forum_about" %}"> Sobre </a></li>
-                    <li class="bar_line"><a> Login </a></li>
+                    <li class="bar_line"><a href="{% url 'forum_home' %}"> Inicio </a></li>
+                    <li class="bar_line"><a href="{% url 'forum_categories' %}"> Categorias </a></li>
+                    <li class="bar_line"><a href="{% url 'forum_about' %}"> Sobre </a></li>
+                    <li class="bar_line"><a href="{% url 'login_page' %}"> Login </a></li>
+                    <li class="bar_line"><a href="{% url 'register_page' %}"> Registar </a></li>
                 </ul>
             </menu>
         </nav>

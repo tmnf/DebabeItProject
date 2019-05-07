@@ -10,20 +10,17 @@ def LoginPage(request):
     return render(request, "login/LoginPage.html")
 
 def RegisterPage(request):
-
     if request.method == "POST":
-        form = RegisterForm(request.POST)
 
-        username = form.cleaned_data["username"]
-        first_name = form.cleaned_data['first_name']
-        last_name = form.cleaned_data['last_name']
-        email = form.cleaned_data['email']
-        password = form.cleaned_data['password']
-        age = form.cleaned_data['age']
+        username = request.POST["username"]
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        password = request.POST['password']
+        age = request.POST['age']
 
-        print(username, first_name, last_name, email, password, age)
+        RegisterUser(username,first_name, last_name, email, password, age)
 
-        if RegisterUser(username, first_name, last_name, email, age, password):
-            return include("forum.urls")
+        return
 
     return render(request, "login/RegisterPage.html");
