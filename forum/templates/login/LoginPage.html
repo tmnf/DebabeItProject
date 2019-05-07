@@ -1,7 +1,7 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-            <form class="Login" name="input" action="{% url 'login_page' %}" method="POST">
+    <form class="Login" action="{% url 'login_page' %}" method="POST">
                 <h1>Login</h1>
                 {% csrf_token %}
 

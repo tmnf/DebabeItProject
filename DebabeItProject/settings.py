@@ -121,3 +121,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/forum/static/profile_pics/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'forum/static/profile_pics')

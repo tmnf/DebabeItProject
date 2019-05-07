@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
-from django.urls import reverse, include
-from .LoginHandle.LoginUtils import RegisterUser
+from django.shortcuts import render, reverse
+
+from .LoginHandle.LoginUtils import RegisterUser, UploadPicture
+
 
 # Create your views here.
 
@@ -18,7 +19,13 @@ def RegisterPage(request):
         password = request.POST['password']
         age = request.POST['age']
 
-        if RegisterUser(username,first_name, last_name, email, password, age):
-            return HttpResponseRedirect(reverse('forum_home'))
+        try:
+            profile_pic = request.FILES['pic']
+            pic_url = UploadPicture(profile_pic)
+        except:
+            pic_url = None
+
+        if RegisterUser(username, first_name, last_name, email, password, age, pic_url):
+            return HttpResponseRedirect(reverse('forum_home'), {'register_sucess': "Registado com Sucesso"})
 
     return render(request, "login/RegisterPage.html");
