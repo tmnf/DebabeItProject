@@ -1,5 +1,6 @@
 # This Class Handles User Authentication #
 
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
@@ -12,6 +13,7 @@ def LoginUser(username, password, request):
 
     if user is not None:
         login(request, user)
+        messages.success(request, "Sessão Iniciada Com Sucesso")
         return True
     else:
         return False
@@ -19,11 +21,13 @@ def LoginUser(username, password, request):
 def Logout(request):
     try:
         logout(request)
+        messages.success(request, "Sessão Terminada Com Sucesso")
         return True
     except:
         return False
 
-def RegisterUser(username, first_name, last_name, email, password, age, pic_url):
+
+def RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
     try:
         us = User.objects.create_user(username, email, password)
         us.first_name = first_name
@@ -32,6 +36,8 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url)
         us.save()
 
         ForumUser.objects.create(user=us, user_age=age, user_pic=pic_url)
+
+        messages.success(request, "Sessão Iniciada Com Sucesso")
 
         return True
     except:
