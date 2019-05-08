@@ -46,4 +46,9 @@ def logout(request):
 
 
 def profile(request):
-    return render(request, 'login/ProfilePage.html')
+    user = request.user
+
+    if user.is_authenticated:
+        return render(request, 'login/ProfilePage.html', {'user': user})
+
+    return render(request, 'forum/MainPage.html')
