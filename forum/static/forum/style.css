@@ -1,3 +1,7 @@
+body {
+    color: white;
+}
+
 .MenuBar {
     background-color: #111;
     padding-top: 30px;
@@ -17,7 +21,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-
 }
 
 .bar_line{
@@ -34,22 +37,52 @@
 }
 
 .bar_line a:hover {
-  background-color: #111;
+    background-color: #333;
 }
 
 .Content {
-    background-color: #333333;
+    background-color: #333;
     background-position: center;
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
+.CategoriesNav {
+    display: inline-block;
+}
+
 .MenuCategories {
-    background-color: #2eb82e;
-    padding-top: 2px;
-    width: 100%;
-    height: 100%;
+    background-color: #555;
+    width: fit-content;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.MenuCategories h1 {
+    font-size: 30px;
+}
+
+.MenuCategories li {
+    display: block;
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.MenuCategories li a {
+    display: block;
+    color: white;
+    text-align: left;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+.MenuCategories li a:hover {
+    background-color: #333;
 }
 
 .Login {

@@ -43,3 +43,7 @@ def RegisterPage(request):
 def logout(request):
     if Logout(request):
         return HttpResponseRedirect(reverse('forum_home'))
+
+
+def profile(request):
+    return render(request, 'login/ProfilePage.html')
