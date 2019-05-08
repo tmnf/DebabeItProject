@@ -43,3 +43,12 @@ def RegisterPage(request):
 def logout(request):
     if Logout(request):
         return HttpResponseRedirect(reverse('forum_home'))
+
+
+def profile(request):
+    user = request.user
+
+    if user.is_authenticated:
+        return render(request, 'login/ProfilePage.html', {'user': user})
+
+    return render(request, 'forum/MainPage.html')

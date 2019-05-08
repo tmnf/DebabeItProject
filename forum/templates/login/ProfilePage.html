@@ -1,0 +1,23 @@
+{% extends 'forum/Base.html' %}
+
+{% block content %}
+    {% if user %}
+
+        <section>
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+            <hr>
+
+            <picture>
+                <img src="{{ user.forumuser.user_pic }}" alt="pic.jpg" width="400">
+            </picture>
+
+            <p> Email: {{ user.email }} </p>
+            <p> Idade: {{ user.forumuser.user_age }} </p>
+
+            <!-- Dá enfase aos likes. -->
+            <p> Likes: {{ user.forumuser.user_likes }} </p>
+
+        </section>
+    {% endif %}
+{% endblock content %}
