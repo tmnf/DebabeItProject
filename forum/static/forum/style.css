@@ -105,6 +105,43 @@
     background-color: #ff9900;
 }
 
+.regFields {
+    width: 280px;
+    margin-top: 0px;
+    margin-left: 20px;
+    color: #2eb82e;
+    font-family: sans-serif;
+}
+
+.regFields h1 {
+    float: top;
+    font-size: 30px;
+    border-bottom: 6px solid #ff9900;
+    margin-bottom: 15px;
+    padding: 2px 2px 2px 0px;
+
+}
+
+.textReg {
+    width: 100%;
+    overflow: hidden;
+    font-size: 30px;
+    margin-bottom: 8px;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+
+.regFields input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 20px;
+    color: white;
+
+}
+
+
+
 
 
 

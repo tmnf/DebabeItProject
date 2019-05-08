@@ -2,26 +2,33 @@
 
 {% block content %}
 
-    <h1> Registo </h1>
     <form action="{% url 'register_page' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="regFields">
+            <h1> Registo </h1>
+                    <div class="textReg">
+                        Username:<input type="text" name="username"><br>
+                    </div>
+                    <div class="textReg">
+                        email:<input type="email" name="email"><br>
+                    </div>
+                    <div class="textReg">
+                        Password:<input type="password" name="password"><br>
+                    </div>
+                    <div class="textReg">
+                        Primeiro Nome:<input type="text" name="first_name"><br>
+                    </div>
+                    <div class="textReg">
+                        Último Nome:<input type="text" name="last_name"><br>
+                    </div>
+                    <div class="textReg">
+                        Idade:<input type="number" name="age"><br>
+                    </div>
+                    <div class="textReg">
+                        Foto:<input type="file" name="pic"><br>
+                    </div>
 
-        Username:
-        <input type="text" name="username"><br>
-        email:
-        <input type="email" name="email"><br>
-        Password:
-        <input type="password" name="password"><br>
-        Primeiro Nome:
-        <input type="text" name="first_name"><br>
-        Último Nome:
-        <input type="text" name="last_name"><br>
-        Idade:
-        <input type="number" name="age"><br>
-        Foto:
-        <input type="file" name="pic"><br>
-
-        <input type="submit" value="Submit">
-
+            <input class="submitReg" type="button" value="Registar">
+        </div>
     </form>
 
 {% endblock content %}
