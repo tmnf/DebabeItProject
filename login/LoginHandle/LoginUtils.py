@@ -37,7 +37,7 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
 
         ForumUser.objects.create(user=us, user_age=age, user_pic=pic_url)
 
-        messages.success(request, "Sessão Iniciada Com Sucesso")
+        messages.success(request, "Registado Com Sucesso")
 
         return True
     except:
