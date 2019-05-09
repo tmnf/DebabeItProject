@@ -5,12 +5,12 @@
 
     <form name="input" action="{% url 'login_page' %}" method="POST">
         <section class="Login">
-            <h1>Log In</h1>
+            <h1> Log In </h1>
 
             {% csrf_token %}
 
             <div class="textLogin">
-                <input class="user" type="text" name="username" placeholder="Username"><br>
+                <input type="text" name="username" placeholder="Username"><br>
             </div>
             <div class="textLogin">
                 <input type="password" name="password" placeholder="Password"><br>
@@ -20,6 +20,5 @@
         </section>
 
         {% if error %}<b>{{ error }}</b>{% endif %}
-
     </form>
 {% endblock content %}
