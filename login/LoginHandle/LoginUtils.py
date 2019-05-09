@@ -8,6 +8,7 @@ from django.core.files.storage import FileSystemStorage
 from forum.models import ForumUser
 
 
+# Logs User In
 def LoginUser(username, password, request):
     user = authenticate(username=username, password=password)
 
@@ -18,6 +19,8 @@ def LoginUser(username, password, request):
     else:
         return False
 
+
+# Ends User Session
 def Logout(request):
     try:
         logout(request)
@@ -27,6 +30,7 @@ def Logout(request):
         return False
 
 
+# Register User Into Database
 def RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
     try:
         us = User.objects.create_user(username, email, password)
@@ -44,6 +48,7 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
         return False
 
 
+# Storage User's Profile Picture
 def UploadPicture(profile_pic):
     fs = FileSystemStorage()
 

@@ -18,5 +18,8 @@
 
             <input class="submitLogin" type="submit" value="Login">
         </div>
+
+        {% if error %}<b>{{ error }}</b>{% endif %}
+
     </form>
 {% endblock content %}

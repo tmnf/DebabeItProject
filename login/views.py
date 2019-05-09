@@ -10,6 +10,7 @@ def LoginPage(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('forum_home'))
 
+    error = False
     if request.method == "POST":
 
         username = request.POST['username']
@@ -18,8 +19,14 @@ def LoginPage(request):
         if username != '' and password != '':
             if LoginUtils.LoginUser(username, password, request):
                 return HttpResponseRedirect(reverse('forum_home'))
+            else:
+                error = "Informações inválidas ou o utilizador não existe"
 
-    return render(request, "login/LoginPage.html")
+    context = {
+        'error': error
+    }
+
+    return render(request, "login/LoginPage.html", context)
 
 
 # User Register Page
@@ -27,6 +34,7 @@ def RegisterPage(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('forum_home'))
 
+    error = False
     if request.method == "POST":
 
         username = request.POST["username"]
@@ -44,8 +52,13 @@ def RegisterPage(request):
 
         if LoginUtils.RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
             return HttpResponseRedirect(reverse('forum_home'))
+        else:
+            error = "Campos em falta, inválidos ou username já existe"
 
-    return render(request, "login/RegisterPage.html");
+    context = {
+        'error': error
+    }
+    return render(request, "login/RegisterPage.html", context);
 
 
 # Logs User Out
