@@ -16,6 +16,9 @@ class ForumUser(models.Model):
 class Categorie(models.Model):
     categorie_title = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.categorie_title
+
 class Forum(models.Model):
     forum_title = models.CharField(max_length=100)
     forum_owner = models.ForeignKey(ForumUser, on_delete=models.CASCADE)
