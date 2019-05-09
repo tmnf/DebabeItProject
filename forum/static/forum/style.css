@@ -1,5 +1,6 @@
 body {
     color: white;
+    margin: 0px;
 }
 
 .MenuBar {
@@ -43,8 +44,8 @@ body {
 .Content {
     background-color: #333;
     background-position: center;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     min-height: 100vh;
 }
 
@@ -145,6 +146,7 @@ body {
     color: #2eb82e;
     font-family: sans-serif;
     background-color: #333333;
+    display: inline-block;
 }
 
 .regFields h1 {
