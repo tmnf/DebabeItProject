@@ -5,9 +5,11 @@ from forum.Utils.MathUtils import GetAge
 from .LoginHandle import LoginUtils
 
 
-# Create your views here.
-
+# User Authentication Page
 def LoginPage(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('forum_home'))
+
     if request.method == "POST":
 
         username = request.POST['username']
@@ -19,7 +21,12 @@ def LoginPage(request):
 
     return render(request, "login/LoginPage.html")
 
+
+# User Register Page
 def RegisterPage(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('forum_home'))
+
     if request.method == "POST":
 
         username = request.POST["username"]
@@ -41,20 +48,22 @@ def RegisterPage(request):
     return render(request, "login/RegisterPage.html");
 
 
+# Logs User Out
 def logout(request):
-    if LoginUtils.Logout(request):
-        return HttpResponseRedirect(reverse('forum_home'))
+    if request.user.is_authenticated:
+        LoginUtils.Logout(request)
+    return HttpResponseRedirect(reverse('forum_home'))
 
 
+# User Profile Page
 def profile(request):
     user = request.user
 
-    context = {
-        'user': user,
-        'user_age': GetAge(user.forumuser.user_age)
-    }
-
     if user.is_authenticated:
+        context = {
+            'user': user,
+            'user_age': GetAge(user.forumuser.user_age)
+        }
         return render(request, 'login/ProfilePage.html', context)
 
-    return render(request, 'forum/MainPage.html')
+    return HttpResponseRedirect(reverse('forum_home'))

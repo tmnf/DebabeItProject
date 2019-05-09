@@ -1,5 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 
 # Create your models here.
 
@@ -8,6 +9,9 @@ class ForumUser(models.Model):
     user_pic = models.ImageField(null=True, blank=True)
     user_age = models.CharField(max_length=100)
     user_likes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username
 
 class Categorie(models.Model):
     categorie_title = models.CharField(max_length=100)
