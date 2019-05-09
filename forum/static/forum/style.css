@@ -194,5 +194,17 @@ body {
     display: inline-block;
 }
 
+.profile h1{
+    float: top;
+    font-size: 35px;
+    border-bottom: 6px solid #ff9900;
+    margin-bottom: 15px;
+    margin-left: 2px;
+    padding: 2px;
+    color: #2eb82e;
+}
+
+
+
 
 
