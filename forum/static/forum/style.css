@@ -3,6 +3,10 @@ body {
     margin: 0px;
 }
 
+h1 {
+    margin: 0px;
+}
+
 .MenuBar {
     background-color: #111;
     padding-top: 30px;
@@ -47,10 +51,6 @@ body {
     margin: 0px;
     padding: 0px;
     min-height: 100vh;
-}
-
-.CategoriesNav {
-    display: inline-block;
 }
 
 .MenuCategories {
@@ -146,7 +146,6 @@ body {
     color: #2eb82e;
     font-family: sans-serif;
     background-color: #333333;
-    display: inline-block;
 }
 
 .regFields h1 {
