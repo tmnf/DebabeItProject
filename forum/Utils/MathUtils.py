@@ -4,11 +4,11 @@ from datetime import date
 
 
 def GetAge(birth):
-    aux = birth.split('/')
+    aux = birth.split('-')
 
-    born_year = int(aux[2])
+    born_year = int(aux[0])
     born_month = int(aux[1])
-    born_day = int(aux[0])
+    born_day = int(aux[2])
 
     today = date.today()
 

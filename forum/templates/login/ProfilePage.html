@@ -7,14 +7,14 @@
             <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 
             <picture class="profilepic">
-                <img src="{{ user.forumuser.user_pic }}" alt="pic.jpg" width="270">
+                <img src="{{ user.forumuser.pic }}" alt="pic.jpg" width="270">
             </picture>
             <div class="profileinfo">
                 <p> Email: {{ user.email }} </p>
-                <p> Idade: {{ user.forumuser.user_age }} </p>
+                <p> Idade: {{ user_age }} </p>
 
                 <!-- Dá enfase aos likes. -->
-                <p> Likes: {{ user.forumuser.user_likes }} </p>
+                <p> Likes: {{ user.forumuser.likes }} </p>
             </div>
         </section>
     {% endif %}

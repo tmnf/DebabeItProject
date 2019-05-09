@@ -39,7 +39,7 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
 
         us.save()
 
-        ForumUser.objects.create(user=us, user_age=age, user_pic=pic_url)
+        ForumUser.objects.create(user=us, age=age, pic=pic_url)
 
         messages.success(request, "Registado Com Sucesso")
 

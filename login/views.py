@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
 from forum.Utils.MathUtils import GetAge
-from .LoginHandle import LoginUtils
+from .LoginHandle import AuthUtils
 
 
 # User Authentication Page
@@ -17,7 +17,7 @@ def LoginPage(request):
         password = request.POST['password']
 
         if username != '' and password != '':
-            if LoginUtils.LoginUser(username, password, request):
+            if AuthUtils.LoginUser(username, password, request):
                 return HttpResponseRedirect(reverse('forum_home'))
             else:
                 error = "Informações inválidas ou o utilizador não existe"
@@ -46,11 +46,11 @@ def RegisterPage(request):
 
         try:
             profile_pic = request.FILES['pic']
-            pic_url = LoginUtils.UploadPicture(profile_pic)
+            pic_url = AuthUtils.UploadPicture(profile_pic)
         except:
             pic_url = None
 
-        if LoginUtils.RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
+        if AuthUtils.RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
             return HttpResponseRedirect(reverse('forum_home'))
         else:
             error = "Campos em falta, inválidos ou username já existe"
@@ -64,7 +64,7 @@ def RegisterPage(request):
 # Logs User Out
 def logout(request):
     if request.user.is_authenticated:
-        LoginUtils.Logout(request)
+        AuthUtils.Logout(request)
     return HttpResponseRedirect(reverse('forum_home'))
 
 
@@ -75,7 +75,7 @@ def profile(request):
     if user.is_authenticated:
         context = {
             'user': user,
-            'user_age': GetAge(user.forumuser.user_age)
+            'user_age': GetAge(user.forumuser.age)
         }
         return render(request, 'login/ProfilePage.html', context)
 

@@ -6,29 +6,47 @@ from django.db import models
 
 class ForumUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_pic = models.ImageField(null=True, blank=True)
-    user_age = models.CharField(max_length=100)
-    user_likes = models.IntegerField(default=0)
+    pic = models.ImageField(null=True, blank=True)
+    age = models.CharField(max_length=100)
+    likes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
 
+
 class Categorie(models.Model):
-    categorie_title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    key = models.IntegerField()
 
     def __str__(self):
         return self.categorie_title
 
+
+class DebateMode(models.Model):
+    title = models.CharField(max_length=100)
+    key = models.IntegerField()
+
+    def __str__(self):
+        return self.title
+
+
 class Forum(models.Model):
-    forum_title = models.CharField(max_length=100)
-    forum_owner = models.ForeignKey(ForumUser, on_delete=models.CASCADE)
-    forum_categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE)
-    forum_mode = models.IntegerField()
+    title = models.CharField(max_length=100)
+    descr = models.TextField(default="")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+    mode = models.ForeignKey(DebateMode, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.forum_title
 
 
 class Post(models.Model):
-    post_owner = models.ForeignKey(ForumUser, on_delete=models.CASCADE)
-    post_text = models.CharField(max_length=5000)
-    post_pub_date = models.DateTimeField("Data de publicação")
-    post_forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
-    post_likes = models.IntegerField(default=0)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    pub_date = models.DateTimeField("Data de publicação")
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.post_forum.forum_title + " by: " + self.post_owner.user.username
