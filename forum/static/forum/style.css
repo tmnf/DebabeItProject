@@ -197,12 +197,13 @@ h1 {
 
 .profile h1{
     float: top;
-    font-size: 35px;
-    border-bottom: 6px solid #ff9900;
+    font-size: 50px;
+    border-bottom: 10px solid #ff9900;
     margin-bottom: 15px;
     margin-left: 2px;
     padding: 2px;
     color: #2eb82e;
+    text-align: center;
 }
 
 
@@ -215,8 +216,18 @@ h1 {
     margin-right: auto;
 }
 
-.profileinfo {
+.profile p {
+    text-align: center;
+    font-size: 22px;
 
+
+}
+
+.profile h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    color: #2eb82e;
 }
 
 

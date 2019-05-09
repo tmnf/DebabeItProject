@@ -9,13 +9,11 @@
             <picture class="profilepic">
                 <img src="{{ user.forumuser.pic }}" alt="pic.jpg" width="270">
             </picture>
-            <div class="profileinfo">
                 <p> Email: {{ user.email }} </p>
                 <p> Idade: {{ user_age }} </p>
 
                 <!-- Dá enfase aos likes. -->
-                <p> Likes: {{ user.forumuser.likes }} </p>
-            </div>
+                <h2> Likes: {{ user.forumuser.likes }} </h2>
         </section>
     {% endif %}
 {% endblock content %}
