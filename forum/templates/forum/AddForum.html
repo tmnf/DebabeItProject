@@ -1,0 +1,29 @@
+{% extends "forum/Base.html" %}
+
+{% block content %}
+
+    <form name="input" action="{% url 'forum_add' categorie %}" method="POST">
+        <section class="Login">
+            <h1> Adicionar Discussão </h1>
+
+            {% csrf_token %}
+
+            <div>
+                <input type="text" name="title" placeholder="Titúlo da Discussão"><br>
+            </div>
+            <div>
+                <textarea type="text" name="descr" placeholder="Descrição" cols="50" rows="10"></textarea><br>
+            </div>
+            <div>
+                <select name="mode">
+                    <option selected="selected" disabled> Tipo de Debate</option>
+                    <option value="{{ default }}"> Normal</option>
+                    <option value="{{ debateIt }}"> DebateIt</option>
+                </select>
+            </div>
+
+            <input class="submitLogin" type="submit" value="Adicionar Discussão">
+        </section>
+    </form>
+
+{% endblock content %}
