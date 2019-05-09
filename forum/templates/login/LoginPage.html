@@ -4,7 +4,7 @@
 {% block content %}
 
     <form name="input" action="{% url 'login_page' %}" method="POST">
-        <div class="Login">
+        <section class="Login">
             <h1>Log In</h1>
 
             {% csrf_token %}
@@ -17,7 +17,7 @@
             </div>
 
             <input class="submitLogin" type="submit" value="Login">
-        </div>
+        </section>
 
         {% if error %}<b>{{ error }}</b>{% endif %}
 

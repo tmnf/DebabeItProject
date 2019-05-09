@@ -1,0 +1,20 @@
+{% extends "forum/Base.html" %}
+
+{% block content %}
+
+    <section class="Login">
+        <h1>Log In</h1>
+
+        {% csrf_token %}
+
+        <div class="textLogin">
+            <input class="user" type="text" name="username" placeholder="Username"><br>
+        </div>
+        <div class="textLogin">
+            <input type="password" name="password" placeholder="Password"><br>
+        </div>
+
+        <input class="submitLogin" type="submit" value="Login">
+    </section>
+
+{% endblock content %}
