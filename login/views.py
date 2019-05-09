@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
+from forum.Utils.MathUtils import GetAge
 from .LoginHandle import LoginUtils
 
 
@@ -48,7 +49,12 @@ def logout(request):
 def profile(request):
     user = request.user
 
+    context = {
+        'user': user,
+        'user_age': GetAge(user.forumuser.user_age)
+    }
+
     if user.is_authenticated:
-        return render(request, 'login/ProfilePage.html', {'user': user})
+        return render(request, 'login/ProfilePage.html', context)
 
     return render(request, 'forum/MainPage.html')
