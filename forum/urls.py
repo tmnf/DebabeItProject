@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^$', views.MainPage, name='forum_home'),
     url(r'^categories/', views.CategoriesPage, name='forum_categories'),
     url(r'^about/', views.AboutPage, name='forum_about'),
-    url(r'^add/(?P<categorie>[0-9]+)/$', views.AddForum, name='forum_add')
+    url(r'^add/(?P<categorie_id>[0-9]+)/$', views.AddForum, name='forum_add')
 ]

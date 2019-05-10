@@ -16,4 +16,3 @@ HEALTH_CAT = 8
 
 OTHERS_CAT = 0
 
-# Teste

@@ -17,17 +17,17 @@ def AboutPage(request):
     return render(request, "forum/AboutPage.html")
 
 
-def AddForum(request, categorie):
+def AddForum(request, categorie_id):
     if request.method == 'POST':
         form = request.POST
-        success = create_forum(form['title'], form['descr'], request.user, categorie, form['mode'])
+        success = create_forum(form['title'], form['descr'], request.user, categorie_id, form['mode'])
         if success:
             return HttpResponseRedirect(reverse('forum_home'))
 
     context = {
         'default': constants.DAFAULT_MODE,
         'debateIt': constants.DEBATEIT_MODE,
-        'categorie': categorie
+        'categorie': categorie_id
     }
 
     return render(request, 'forum/AddForum.html', context)
