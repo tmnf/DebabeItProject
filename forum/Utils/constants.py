@@ -15,3 +15,5 @@ SCIENCE_CAT = 7
 HEALTH_CAT = 8
 
 OTHERS_CAT = 0
+
+# Teste
