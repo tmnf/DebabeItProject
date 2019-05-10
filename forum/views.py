@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
-from .PostHandle.CreationHandler import create_forum
+from .PostHandle.CreationHandler import create_forum, create_post
 from .Utils import constants
 
 
@@ -31,3 +31,15 @@ def AddForum(request, categorie_id):
     }
 
     return render(request, 'forum/AddForum.html', context)
+
+
+def AddPost(request, forum_id):
+    if request.method == 'POST':
+        success = create_post(request.user, request.POST['comment'], forum_id)
+        if success:
+            return HttpResponseRedirect(reverse('forum_home'))
+
+    context = {
+        'forum_id': forum_id
+    }
+    return render(request, 'forum/AddPost.html', context)

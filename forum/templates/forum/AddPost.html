@@ -1,5 +1,17 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-    This is Post Add Page
+    <form name="input" action="{% url 'forum_post' forum_id %}" method="POST">
+        <section class="Login">
+            <h1> Comentar Discussão </h1>
+
+            {% csrf_token %}
+
+            <div>
+                <textarea type="text" name="comment" placeholder="Comentário" cols="50" rows="10"></textarea><br>
+            </div>
+
+            <input class="submitLogin" type="submit" value="Comentar Discussão">
+        </section>
+    </form>
 {% endblock content %}

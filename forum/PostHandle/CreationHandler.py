@@ -1,5 +1,7 @@
 # This class handles all forum/post creation
 
+import datetime
+
 from ..models import Forum, Post, Categorie, DebateMode
 
 
@@ -16,9 +18,10 @@ def create_forum(title, descr, owner, categorie_id, mode):
 
 
 # Creates a post in a Discussion
-def create_post(owner, text, forum):
+def create_post(owner, text, forum_id):
     try:
-        Post.objects.create(owner=owner, text=text, forum=forum)
+        forum = Forum.objects.get(id=forum_id)
+        Post.objects.create(owner=owner, text=text, forum=forum, pub_date=datetime.datetime.now())
         return True
     except Exception as err:
         print(err)

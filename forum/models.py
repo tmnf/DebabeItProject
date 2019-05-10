@@ -49,4 +49,4 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.forum.title + " by: " + self.owner.user.username
+        return self.forum.title + " by: " + self.owner.username
