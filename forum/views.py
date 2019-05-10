@@ -27,7 +27,7 @@ def AddForum(request, categorie):
     context = {
         'default': constants.DAFAULT_MODE,
         'debateIt': constants.DEBATEIT_MODE,
-        'categorie': constants.CINEMA_CAT  # MUDAR ISTO
+        'categorie': categorie
     }
 
     return render(request, 'forum/AddForum.html', context)

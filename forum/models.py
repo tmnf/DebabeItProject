@@ -19,7 +19,7 @@ class Categorie(models.Model):
     key = models.IntegerField()
 
     def __str__(self):
-        return self.categorie_title
+        return self.title
 
 
 class DebateMode(models.Model):
@@ -38,7 +38,7 @@ class Forum(models.Model):
     mode = models.ForeignKey(DebateMode, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.forum_title
+        return self.title
 
 
 class Post(models.Model):
@@ -49,4 +49,4 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.post_forum.forum_title + " by: " + self.post_owner.user.username
+        return self.forum.title + " by: " + self.owner.user.username
