@@ -278,13 +278,24 @@ h1 {
     padding: 2px;
     color: #2eb82e;
     text-align: center;
-    text-align: left
 }
 
 .contacts p{
     font-size: 16px;
     line-height: 0.8;
     margin-left: 4px;
+}
+
+.messages{
+    font-size: 20px;
+    color: #ff9900;
+
+}
+
+.mainheader{
+    margin-top: 10px;
+    font-size: 30px;
+    color: #ff9900;
 }
 
 
