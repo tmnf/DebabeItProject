@@ -38,6 +38,11 @@ def CategoryDetails(request, category_id):
 
 
 def DiscussionDetails(request, discussion_id):
+    if request.method == 'POST':
+        success = create_post(request.user, request.POST['comment'], discussion_id)
+        if success:
+            return HttpResponseRedirect(reverse('forum_discussion', args=discussion_id))
+
     logged_in = request.user.is_authenticated
     discussion = Discussion.objects.get(id=discussion_id)
 
@@ -67,18 +72,3 @@ def AddDiscussion(request, category_id):
     }
 
     return render(request, 'forum/AddForum.html', context)
-
-
-def AddPost(request, discussion_id):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('forum_home'))
-
-    if request.method == 'POST':
-        success = create_post(request.user, request.POST['comment'], discussion_id)
-        if success:
-            return HttpResponseRedirect(reverse('forum_discussion', args=discussion_id))
-
-    context = {
-        'discussion_id': discussion_id
-    }
-    return render(request, 'forum/AddPost.html', context)

@@ -8,9 +8,19 @@
     {% endfor %}
 
     {% if logged_in %}
-        <a href="{% url 'forum_post' discussion.id %}">
-            <button> Comentar</button>
-        </a>
+        <form name="input" action="{% url 'forum_discussion' discussion.id %}" method="POST">
+            <section class="Login">
+                <h1> Comentar </h1>
+                <hr>
+                {% csrf_token %}
+
+                <div>
+                    <textarea type="text" name="comment" placeholder="Comentário" cols="50" rows="10"></textarea><br>
+                </div>
+
+                <input class="submitLogin" type="submit" value="Comentar">
+            </section>
+        </form>
     {% endif %}
 
 {% endblock %}
