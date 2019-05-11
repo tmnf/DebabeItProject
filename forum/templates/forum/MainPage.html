@@ -1,12 +1,15 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-    Main Page <br>
+    <div class="mainheader">
+        <h1>Bem vindo ao DebateIt !</h1>
+        <br>
+    </div>
 
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
             {% endfor %}
         </ul>
     {% endif %}
