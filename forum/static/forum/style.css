@@ -54,7 +54,7 @@ h1 {
 }
 
 .MenuCategories {
-    background-color: #555;
+    background-color: #2eb82e;
     width: fit-content;
     padding-right: 20px;
     padding-left: 20px;
@@ -62,15 +62,20 @@ h1 {
 
 .MenuCategories h1 {
     font-size: 30px;
+    color: #111111;
+    background-color: #ff9900;
+    display: block;
+    padding: 12px;
 }
 
 .MenuCategories li {
     display: block;
-    text-align: left;
+    text-align: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #2eb82e;
 }
 
 .MenuCategories li a {
@@ -229,6 +234,59 @@ h1 {
     font-size: 30px;
     color: #2eb82e;
 }
+
+.info h1 {
+    float: top;
+    font-size: 35px;
+    border-bottom: 5px solid #ff9900;
+    margin-bottom: 15px;
+    padding: 2px;
+    color: #2eb82e;
+    text-align: center;
+    text-align: left;
+}
+
+.info p{
+    font-size: 16px;
+    line-height: 0.8;
+    margin-left: 4px;
+
+}
+
+.rules h2 {
+    float: top;
+    font-size: 35px;
+    border-bottom: 5px solid #ff9900;
+    margin-bottom: 15px;
+    padding: 2px;
+    color: #2eb82e;
+    text-align: center;
+    text-align: left
+}
+
+.rules p {
+   font-size: 16px;
+    line-height: 0.8;
+    margin-left: 4px;
+}
+
+.contacts h3{
+    float: top;
+    font-size: 35px;
+    border-bottom: 5px solid #ff9900;
+    margin-bottom: 15px;
+    padding: 2px;
+    color: #2eb82e;
+    text-align: center;
+    text-align: left
+}
+
+.contacts p{
+    font-size: 16px;
+    line-height: 0.8;
+    margin-left: 4px;
+}
+
 
 
 
