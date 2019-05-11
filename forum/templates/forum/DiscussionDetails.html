@@ -1,0 +1,16 @@
+{% extends 'forum/Base.html' %}
+
+{% block content %}
+    <h1>{{ discussion.title }}</h1>
+
+    {% for post in posts %}
+        {{ post.text }} <br>
+    {% endfor %}
+
+    {% if logged_in %}
+        <a href="{% url 'forum_post' discussion.id %}">
+            <button> Comentar</button>
+        </a>
+    {% endif %}
+
+{% endblock %}

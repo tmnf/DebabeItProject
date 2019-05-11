@@ -2,15 +2,15 @@
 
 import datetime
 
-from ..models import Forum, Post, Categorie, DebateMode
+from ..models import Discussion, Post, Category, DebateMode
 
 
 # Creates a new Discussion
-def create_forum(title, descr, owner, categorie_id, mode):
+def create_discussion(title, descr, owner, categorie_id, mode):
     try:
-        cat = Categorie.objects.get(key=categorie_id)
+        cat = Category.objects.get(key=categorie_id)
         deb_mode = DebateMode.objects.get(key=mode)
-        Forum.objects.create(title=title, descr=descr, owner=owner, categorie=cat, mode=deb_mode)
+        Discussion.objects.create(title=title, descr=descr, owner=owner, category=cat, mode=deb_mode)
         return True
     except Exception as err:
         print(err)
@@ -18,10 +18,10 @@ def create_forum(title, descr, owner, categorie_id, mode):
 
 
 # Creates a post in a Discussion
-def create_post(owner, text, forum_id):
+def create_post(owner, text, discussion_id):
     try:
-        forum = Forum.objects.get(id=forum_id)
-        Post.objects.create(owner=owner, text=text, forum=forum, pub_date=datetime.datetime.now())
+        discussion = Discussion.objects.get(id=discussion_id)
+        Post.objects.create(owner=owner, text=text, discussion=discussion, pub_date=datetime.datetime.now())
         return True
     except Exception as err:
         print(err)

@@ -14,7 +14,7 @@ class ForumUser(models.Model):
         return self.user.username
 
 
-class Categorie(models.Model):
+class Category(models.Model):
     title = models.CharField(max_length=100)
     key = models.IntegerField()
 
@@ -30,11 +30,11 @@ class DebateMode(models.Model):
         return self.title
 
 
-class Forum(models.Model):
+class Discussion(models.Model):
     title = models.CharField(max_length=100)
     descr = models.TextField(default="")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     mode = models.ForeignKey(DebateMode, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -45,7 +45,7 @@ class Post(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     pub_date = models.DateTimeField("Data de publicação")
-    forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
 
     def __str__(self):
