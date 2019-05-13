@@ -298,7 +298,38 @@ h1 {
     color: #ff9900;
 }
 
+.post_container {
+    background-color: #555;
+    display: block;
+}
 
+.post_pic {
+    float: left;
+    padding: 5px 10px 10px 5px;
+}
+
+.post_pic img {
+    border-radius: 50%;
+}
+
+.post_username {
+    padding-top: 15px;
+    font-size: 25px;
+}
+
+.post_text {
+    padding: 10px 0px 10px 5px;
+}
+
+.post_likes {
+    float: left;
+    padding-left: 5px;
+}
+
+.like_button {
+    cursor: pointer;
+    padding: 0px 0px 10px 10px;
+}
 
 
 

@@ -1,10 +1,25 @@
 {% extends 'forum/Base.html' %}
 
+{% load static %}
+
 {% block content %}
     <h1>{{ discussion.title }}</h1>
 
     {% for post in posts %}
-        {{ post.text }} <br>
+
+        <section class="post_container">
+
+            <picture class="post_pic">
+                <img src="{{ post.owner.forumuser.pic }}" alt="profile_pic" width="55">
+            </picture>
+            <p class="post_username">{{ post.owner.username }} </p>
+
+            <p class="post_text"> {{ post.text }} </p>
+            <p class="post_likes"> Likes: {{ post.like_set.count }} </p>
+
+            <a class="like_button "><img src="{% static "forum/like_button.png" %}" width="30"></a>
+
+        </section>
     {% endfor %}
 
     {% if logged_in %}

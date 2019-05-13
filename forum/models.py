@@ -8,7 +8,6 @@ class ForumUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pic = models.ImageField(null=True, blank=True)
     age = models.CharField(max_length=100)
-    likes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -46,7 +45,12 @@ class Post(models.Model):
     text = models.TextField()
     pub_date = models.DateTimeField("Data de publicação")
     discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE)
-    likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.forum.title + " by: " + self.owner.username
+        return self.discussion.title + " by: " + self.owner.username
+
+
+class Like(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    date_pub = models.DateTimeField(auto_now_add=True)
