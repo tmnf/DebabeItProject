@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
-from forum.models import ForumUser
+from forum.Utils import constants
+from forum.models import ForumUser, ForumRespect
 
 
 # Logs User In
@@ -39,7 +40,9 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
 
         us.save()
 
-        ForumUser.objects.create(user=us, age=age, pic=pic_url)
+        respect_lvl = ForumRespect.objects.get(key=constants.NOVATO)
+
+        ForumUser.objects.create(user=us, age=age, pic=pic_url, respect=respect_lvl)
 
         messages.success(request, "Registado Com Sucesso")
 
@@ -49,6 +52,7 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
 
 
 # Storage User's Profile Picture
+
 def UploadPicture(profile_pic):
     fs = FileSystemStorage()
 
@@ -56,3 +60,25 @@ def UploadPicture(profile_pic):
     pic_url = fs.url(filename)
 
     return pic_url
+
+
+# Checks and Updates User Respect
+
+def CheckRespect(user):
+    likes = user.like_set.count()
+
+    key = constants.NOVATO
+
+    if likes >= constants.DITADOR_MIN:
+        key = constants.DITADOR
+    elif likes >= constants.VITORIOSO_MIN:
+        key = constants.VITORIOSO
+    elif likes >= constants.DEBATENTE_MIN:
+        key = constants.DEBATENTE
+    elif likes >= constants.AMADOR_MIN:
+        key = constants.AMADOR
+
+    respect_lvl = ForumRespect.objects.get(key=key)
+
+    user.forumuser.set_respect(respect_lvl)
+    user.forumuser.save()

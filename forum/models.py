@@ -4,10 +4,22 @@ from django.db import models
 
 # Create your models here.
 
+class ForumRespect(models.Model):
+    title = models.CharField(max_length=100)
+    key = models.IntegerField()
+
+    def __str__(self):
+        return self.title
+
+
 class ForumUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pic = models.ImageField(null=True, blank=True)
     age = models.CharField(max_length=100)
+    respect = models.ForeignKey(ForumRespect, on_delete=models.CASCADE, null=True, default=None)
+
+    def set_respect(self, respect):
+        self.respect = respect
 
     def __str__(self):
         return self.user.username

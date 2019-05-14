@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 
+from login.LoginHandle.AuthUtils import CheckRespect
 from .PostHandle.CreationHandler import create_discussion, create_post
 from .Utils import constants
-from .models import Discussion, Category, Post
+from .models import Discussion, Category, Post, Like
 
 
 # Create your views here.
@@ -18,7 +20,6 @@ def CategoriesPage(request):
     }
 
     return render(request, "forum/CategoriesPage.html", context)
-
 
 def AboutPage(request):
     return render(request, "forum/AboutPage.html")
@@ -72,3 +73,19 @@ def AddDiscussion(request, category_id):
     }
 
     return render(request, 'forum/AddForum.html', context)
+
+
+@login_required
+def AtributeLike(request):
+    post = get_object_or_404(Post, id=request.POST['post_id'])
+    user = post.owner
+
+    if request.user != user:
+        like, created = Like.objects.get_or_create(owner=user, post=post)
+
+        if not created:
+            like.delete()
+
+        CheckRespect(user)
+
+    return HttpResponseRedirect(reverse('forum_discussion', args=(post.discussion_id,)))

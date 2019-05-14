@@ -51,6 +51,7 @@ h1 {
     margin: 0px;
     padding: 0px;
     min-height: 100vh;
+    height: fit-content;
 }
 
 .MenuCategories {
@@ -298,9 +299,51 @@ h1 {
     color: #ff9900;
 }
 
+.discussion_container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.discussion_header {
+    background-color: #555;
+    border: 6px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.disc_head_title {
+    font-size: 30px;
+    text-align: center;
+    color: #ff9900;
+}
+
+.disc_head_descr {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.disc_footer_pic {
+    float: right;
+    margin-right: 10px;
+}
+
+.disc_footer_pic img {
+    border-radius: 50%;
+}
+
+.disc_footer_username {
+    margin-right: 70px;
+    padding-top: 20px;
+    text-align: right;
+    font-size: 17px;
+    color: #2eb82e;
+}
+
 .post_container {
     background-color: #555;
-    display: block;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    border: 3px solid black;
 }
 
 .post_pic {
@@ -323,13 +366,15 @@ h1 {
 
 .post_likes {
     float: left;
-    padding-left: 5px;
+    margin-left: 10px;
 }
 
 .like_button {
-    cursor: pointer;
-    padding: 0px 0px 10px 10px;
+    margin-left: 10px;
 }
 
-
+.like_button:hover {
+    cursor: pointer;
+    background-color: #111111;
+}
 

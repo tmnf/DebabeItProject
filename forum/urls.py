@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^category/(?P<category_id>[0-9]+)/add/$', views.AddDiscussion, name='forum_add'),
 
     url(r'^discussion/(?P<discussion_id>[0-9]+)/$', views.DiscussionDetails, name='forum_discussion'),
+
+    url(r'^like/$', views.AtributeLike, name='forum_like'),
 ]

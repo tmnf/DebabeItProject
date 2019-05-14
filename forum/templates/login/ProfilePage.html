@@ -11,9 +11,9 @@
             </picture>
                 <p> Email: {{ user.email }} </p>
                 <p> Idade: {{ user_age }} </p>
-
+            <p> Nível de Respeito: {{ user.forumuser.respect.title }}</p>
                 <!-- Dá enfase aos likes. -->
-                <h2> Likes: {{ user.forumuser.likes }} </h2>
+            <h2> Likes: {{ user.like_set.count }} </h2>
         </section>
     {% endif %}
 {% endblock content %}
