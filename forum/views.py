@@ -56,9 +56,8 @@ def DiscussionDetails(request, discussion_id):
     return render(request, "forum/DiscussionDetails.html", context)
 
 
+@login_required
 def AddDiscussion(request, category_id):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('forum_home'))
 
     if request.method == 'POST':
         form = request.POST

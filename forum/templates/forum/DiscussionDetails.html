@@ -38,12 +38,14 @@
                     <p class="post_likes"> Likes: {{ post.like_set.count }} </p>
                 </div>
 
-                <form action="{% url 'forum_like' %}" method="Post">
-                    {% csrf_token %}
-                    <button class="like_button" type="submit" value="{{ post.id }}" name="post_id">
-                        Like
-                    </button>
-                </form>
+                {% if logged_in %}
+                    <form action="{% url 'forum_like' %}" method="Post">
+                        {% csrf_token %}
+                        <button class="like_button" type="submit" value="{{ post.id }}" name="post_id">
+                            Like
+                        </button>
+                    </form>
+                {% endif %}
 
             </section>
         {% endfor %}

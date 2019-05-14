@@ -341,8 +341,9 @@ h1 {
 
 .post_container {
     background-color: #555;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
     border: 3px solid black;
 }
 
@@ -365,7 +366,7 @@ h1 {
 }
 
 .post_likes {
-    float: left;
+    text-align: left;
     margin-left: 10px;
 }
 
