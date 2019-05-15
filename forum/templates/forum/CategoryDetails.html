@@ -9,7 +9,7 @@
 
         {% for disc in discussions %}
             <a href="{% url 'forum_discussion' disc.id %}">
-                <button> {{ disc.title }} </button>
+                <button> {{ disc.title }} : {{ disc.descr }} : {{ disc.mode.title }}</button>
             </a><br>
         {% endfor %}
 
