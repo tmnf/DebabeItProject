@@ -5,10 +5,10 @@
 {% block content %}
     {% if user %}
 
-        <section class="profile">
+        <section class="profile_container">
             <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 
-            <picture class="profilepic">
+            <picture class="profile_pic">
                 <img src="{{ user.forumuser.pic }}" alt="pic.jpg" width="270">
             </picture>
 

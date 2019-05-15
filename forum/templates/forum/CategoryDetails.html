@@ -4,18 +4,20 @@
 
 {% block content %}
 
-    <h1> {{ category.title }} </h1><br>
+    <section class="category_container">
+        <h1> {{ category.title }} </h1><br>
 
-    {% for disc in discussions %}
-        <a href="{% url 'forum_discussion' disc.id %}">
-            <button> {{ disc.title }} </button>
-        </a><br>
-    {% endfor %}
+        {% for disc in discussions %}
+            <a href="{% url 'forum_discussion' disc.id %}">
+                <button> {{ disc.title }} </button>
+            </a><br>
+        {% endfor %}
 
-    {% if logged_in %}
-        <a href="{% url 'forum_add' category.key %}">
-            <button> Adicionar Discussão</button>
-        </a>
-    {% endif %}
+        {% if logged_in %}
+            <a href="{% url 'forum_add' category.key %}">
+                <button> Adicionar Discussão</button>
+            </a>
+        {% endif %}
+    </section>
 
 {% endblock content %}

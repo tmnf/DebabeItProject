@@ -5,18 +5,18 @@
 {% block content %}
 
     <form name="input" action="{% url 'forum_add' category_id %}" method="POST">
-        <section class="Login">
+        <section class="add_discussion_container">
             <h1> Adicionar Discussão </h1>
 
             {% csrf_token %}
 
-            <div>
+            <div class="add_discussion_field">
                 <input type="text" name="title" placeholder="Titúlo da Discussão"><br>
             </div>
-            <div>
+            <div class="add_discussion_field">
                 <textarea type="text" name="descr" placeholder="Descrição" cols="50" rows="10"></textarea><br>
             </div>
-            <div>
+            <div class="add_discussion_mode">
                 <select name="mode">
                     <option selected="selected" disabled> Tipo de Debate</option>
                     <option value="{{ default }}"> Normal</option>
@@ -27,14 +27,14 @@
             <br>
 
             <p> Preencher apenas se tiver selecionado tipo "DebateIt" </p>
-            <div>
+            <div class="add_discussion_option">
                 <input type="text" name="option1" placeholder="Opção 1"><br>
             </div>
-            <div>
+            <div class="add_discussion_option">
                 <input type="text" name="option2" placeholder="Opção 2"><br>
             </div>
 
-            <input class="submitLogin" type="submit" value="Adicionar Discussão">
+            <input class="add_discussion_submit" type="submit" value="Adicionar Discussão">
         </section>
     </form>
 

@@ -6,38 +6,43 @@
 <html lang="pt-PT">
 <head>
 
+    <meta name="description" content="Forum de debate">
+    <meta name="author" content="Tiago Farinha">
+    <meta name="author" content="Nuno Martinho">
+
+    <meta http-equiv="refresh" content="60">
+
     <meta charset="UTF-8">
     <title> DebateIt </title>
     <link rel="stylesheet" type="text/css" href="{% static 'forum/style.css' %}" />
 
 </head>
 <body>
-
-    <header class="MenuBar">
-        <picture>
+<header class="base_container">
+    <picture class="base_logo">
             <img  class="Logo" src="{% static 'forum/logo.png' %}">
         </picture>
 
-        <nav>
+    <nav class="base_menu">
             <menu>
-                <ul class="Bar">
-                    <li class="bar_line"><a href="{% url 'forum_home' %}"> Inicio </a></li>
-                    <li class="bar_line"><a href="{% url 'forum_categories' %}"> Categorias </a></li>
-                    <li class="bar_line"><a href="{% url 'forum_about' %}"> Sobre </a></li>
+                <ul class="base_menu_bar">
+                    <li class="base_menu_line"><a href="{% url 'forum_home' %}"> Inicio </a></li>
+                    <li class="base_menu_line"><a href="{% url 'forum_categories' %}"> Categorias </a></li>
+                    <li class="base_menu_line"><a href="{% url 'forum_about' %}"> Sobre </a></li>
 
                     {% if not request.user.is_authenticated %}
-                        <li class="bar_line"><a href="{% url 'login_page' %}"> Login </a></li>
-                        <li class="bar_line"><a href="{% url 'register_page' %}"> Registar </a></li>
+                        <li class="base_menu_line"><a href="{% url 'login_page' %}"> Login </a></li>
+                        <li class="base_menu_line"><a href="{% url 'register_page' %}"> Registar </a></li>
                     {% else %}
-                        <li class="bar_line"><a href="{% url 'profile_page' %}"> Perfil </a></li>
-                        <li class="bar_line"><a href="{% url 'logout_user' %}"> Logout </a></li>
+                        <li class="base_menu_line"><a href="{% url 'profile_page' %}"> Perfil </a></li>
+                        <li class="base_menu_line"><a href="{% url 'logout_user' %}"> Logout </a></li>
                     {% endif %}
                 </ul>
             </menu>
         </nav>
     </header>
 
-    <section class="Content">
+<section class="content">
         {% block content %}{% endblock content %}
     </section>
 

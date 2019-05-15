@@ -83,3 +83,33 @@ def get_like_count(team, discussion):
         for y in x.post_set.filter(discussion=discussion):
             aux += y.like_set.count()
     return aux
+
+
+# Retrieves last discussions
+def get_last_discussions(discussion_list, max_discussions):
+    res = []
+
+    i = 0
+    for x in discussion_list:
+        if i == max_discussions:
+            break
+        res[i] = x
+        i += 1
+
+    return res
+
+
+# Retrieves top users
+def get_top_users(users_list, max_user):
+    res = []
+
+    i = 0
+    for x in users_list:
+        if i == max_user:
+            break
+        res[i] = x
+        i += 1
+
+    return res
+
+    return 10

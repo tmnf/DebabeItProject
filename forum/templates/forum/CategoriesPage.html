@@ -3,10 +3,10 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-    <section>
+    <section class="categories_container">
         <h1> Categorias </h1>
 
-        <div class="category_buttons">
+        <div class="categories_buttons">
             {% for cat in categories %}
                 <a href="{% url 'forum_category' cat.key %}">
                     <button> {{ cat.title }} </button>

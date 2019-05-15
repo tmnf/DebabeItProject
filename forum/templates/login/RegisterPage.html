@@ -5,30 +5,30 @@
 {% block content %}
 
     <form action="{% url 'register_page' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-        <div class="regFields">
+        <div class="register_container">
             <h1> Registo </h1>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="text" name="username" placeholder="Username"><br>
                     </div>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="email" name="email" placeholder="Email"><br>
                     </div>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="password" name="password" placeholder="Password"><br>
                     </div>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="text" name="first_name" placeholder="Primeiro Nome"><br>
                     </div>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="text" name="last_name" placeholder="Último Nome"><br>
                     </div>
-                    <div class="textReg">
+            <div class="register_text">
                         <input type="date" name="age" placeholder="Idade"><br>
                     </div>
                     <div class="picinput">
                         <input type="file" name="pic" ><br>
                     </div>
-            <input class="submitReg" type="submit" value="Registar">
+            <input class="register_submit" type="submit" value="Registar">
         </div>
     </form>
 

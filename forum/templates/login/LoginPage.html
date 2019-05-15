@@ -6,21 +6,21 @@
 {% block content %}
 
     <form name="input" action="{% url 'login_page' %}" method="POST">
-        <section class="Login">
+        <section class="login_container">
             <h1> Log In </h1>
 
             {% csrf_token %}
 
-            <div class="textLogin">
+            <div class="login_text">
                 <input type="text" name="username" placeholder="Username"><br>
             </div>
-            <div class="textLogin">
+            <div class="login_text">
                 <input type="password" name="password" placeholder="Password"><br>
             </div>
 
-            <input class="submitLogin" type="submit" value="Login">
+            <input class="login_submit" type="submit" value="Login">
         </section>
 
-        {% if error %}<b>{{ error }}</b>{% endif %}
+        <div>{% if error %}<b>{{ error }}</b>{% endif %}</div>
     </form>
 {% endblock content %}

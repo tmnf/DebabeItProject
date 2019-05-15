@@ -7,10 +7,9 @@
 {% block content %}
 
     <br>
-
     <div class="discussion_container">
 
-        <section>
+        <section class="discussion_debatemode">
             {% if debate %}
                 <label for="team1_prog"> {{ options.first }}: </label>
                 <progress id="team1_prog" max="10" value="{{ team1_likes }}"></progress> {{ team1_likes }} votos
@@ -57,41 +56,43 @@
 
                 <div>
                     <p class="post_text"> {{ post.text }} </p>
-                </div>
 
-
-                <form action="{% url 'forum_like' %}" method="Post">
+                    <form action="{% url 'forum_like' %}" method="Post">
                         {% csrf_token %}
 
-                    <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
+                        <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
 
-                    {% if logged_in %}
-                        <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
-                            Like
-                        </button>
-                    {% endif %}
-                </form>
+                        {% if logged_in %}
+                            <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
+                                Like
+                            </button>
+                        {% endif %}
+                    </form>
+
+                </div>
 
             </section>
         {% endfor %}
 
-        {% if logged_in %}
-            <form action="{% url 'forum_discussion' discussion.id %}" method="POST">
-                <section>
-                    <hr>
-                    <h1> Comentar </h1>
-                    <hr>
-                    {% csrf_token %}
+        <section class="discussion_comment">
+            {% if logged_in %}
+                <form action="{% url 'forum_discussion' discussion.id %}" method="POST">
+                    <section>
+                        <hr>
+                        <h1> Comentar </h1>
+                        <hr>
+                        {% csrf_token %}
 
-                    <div>
-                        <textarea type="text" name="comment" placeholder="Comentário" cols="50"
-                                  rows="10"></textarea><br>
-                    </div>
+                        <div>
+                            <textarea type="text" name="comment" placeholder="Comentário" cols="50"
+                                      rows="10"></textarea><br>
+                        </div>
 
-                    <input type="submit" value="Comentar">
-                </section>
-            </form>
-        {% endif %}
+                        <input type="submit" value="Comentar">
+                    </section>
+                </form>
+            {% endif %}
+        </section>
     </div>
 
 {% endblock %}

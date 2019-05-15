@@ -2,15 +2,24 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404
 
-from forum.utils.creation_manager import create_discussion, create_post, check_if_signed, generate_context
+from forum.utils import creation_manager
 from login.login_manager.auth_utils import check_respect
-from .models import Discussion, Category, Post, Like
+from .models import Discussion, Category, Post, Like, User
 from .utils import constants
 
 
 # Main Page
 def index(request):
-    return render(request, "forum/MainPage.html")
+    # CORRIGIR ESTA SHIT
+    # recent_discs = creation_manager.get_last_discussions(Discussion.objects.all(), constants.MAX_DISCS)
+    # top_users = creation_manager.get_top_users(User.objects.all(), constants.MAX_USERS)
+
+    context = {
+        'recent_discs': Discussion.objects.all(),
+        'top_users': User.objects.all()
+    }
+
+    return render(request, "forum/MainPage.html", context)
 
 
 # Categories Page
@@ -24,7 +33,12 @@ def categories_page(request):
 
 # About Page
 def about_page(request):
-    return render(request, "forum/AboutPage.html")
+    context = {
+        'email': constants.EMAIL,
+        'phone1': constants.CELL_PHONE1,
+        'phone2': constants.CELL_PHONE2,
+    }
+    return render(request, "forum/AboutPage.html", context)
 
 
 # Category's Details
@@ -44,7 +58,7 @@ def category_details(request, category_id):
 # Detailed Discussion
 def discussion_details(request, discussion_id):
     if request.method == 'POST':
-        success = create_post(request.user, request.POST['comment'], discussion_id)
+        success = creation_manager.create_post(request.user, request.POST['comment'], discussion_id)
         if not success:
             return
 
@@ -53,15 +67,15 @@ def discussion_details(request, discussion_id):
 
     if discussion.mode.key == constants.DEBATEIT_MODE:
         if logged_in:
-            signed = check_if_signed(request.user, discussion)
+            signed = creation_manager.check_if_signed(request.user, discussion)
             if not signed:
-                context = generate_context(discussion, constants.NOT_SIGNED_PURP, logged_in)
+                context = creation_manager.generate_context(discussion, constants.NOT_SIGNED_PURP, logged_in)
                 return render(request, "forum/DebateSignUp.html", context)
 
-        context = generate_context(discussion, constants.DEBATEIT_PURP, logged_in)
+        context = creation_manager.generate_context(discussion, constants.DEBATEIT_PURP, logged_in)
         return render(request, "forum/DiscussionDetails.html", context)
 
-    context = generate_context(discussion, constants.NORMAL_PURP, logged_in)
+    context = creation_manager.generate_context(discussion, constants.NORMAL_PURP, logged_in)
     return render(request, "forum/DiscussionDetails.html", context)
 
 
@@ -73,10 +87,12 @@ def add_discussion(request, category_id):
         form = request.POST
 
         if int(form['mode']) == constants.DEBATEIT_MODE:
-            success = create_discussion(form['title'], form['descr'], request.user, category_id,
-                                        form['mode'], form['option1'], form['option2'])
+            success = creation_manager.create_discussion(form['title'], form['descr'],
+                                                         request.user, category_id, form['mode'],
+                                                         form['option1'], form['option2'])
         else:
-            success = create_discussion(form['title'], form['descr'], request.user, category_id, form['mode'])
+            success = creation_manager.create_discussion(form['title'], form['descr'],
+                                                         request.user, category_id, form['mode'])
 
         if success:
             return HttpResponseRedirect(reverse('forum_category', args=category_id))
@@ -87,7 +103,7 @@ def add_discussion(request, category_id):
         'category_id': category_id
     }
 
-    return render(request, 'forum/AddForum.html', context)
+    return render(request, 'forum/AddDiscussion.html', context)
 
 
 # Like Input Handle

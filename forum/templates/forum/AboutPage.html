@@ -3,34 +3,36 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-    <div class="info">
-        <h1>Informações:</h1>
-        <pre>
+    <section class="about_container">
+        <div class="about_info">
+            <h1>Informações:</h1>
+            <pre>
             O DebateIt foi criado com o objetivo de debater os mais diveros temas da sociedade.
             Esses temas encontram-se disponiveís para debate no separador Categorias
             Pensem no tema e comecem um Debate !
-        </pre>
-    </div>
+            </pre>
+        </div>
 
-    <br>
+        <hr>
 
-    <div class="rules">
-        <h2>Regras:</h2>
-        <pre>
+        <div class="about_rules">
+            <h2>Regras:</h2>
+            <pre>
             1.Não são permitidas ofensas entre membros do DebateIt.
             2.Não são permitidos comentários com conteudo racista ou xenófobo.
             3.As discussões criadas pelos membros do DebateIt devem corresponder à categoria onde estão inseridas.
-        </pre>
-    </div>
+            </pre>
+        </div>
 
-    <br>
+        <hr>
 
-    <div class="contacts">
-        <h3>Contactos:</h3>
-        <pre>
-            tlm: 999999999
-            email: debateit@gmail.com
-        </pre>
-    </div>
+        <div class="about_contacts">
+            <h3>Contactos:</h3>
 
+            <p> Email: {{ email }} </p>>
+            <p> Contacto 1: {{ phone1 }} </p>>
+            <p> Contacto 2: {{ phone2 }} </p>>
+
+        </div>
+    </section>
 {% endblock content %}

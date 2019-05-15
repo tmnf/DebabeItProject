@@ -7,7 +7,7 @@ h1 {
     margin: 0;
 }
 
-.MenuBar {
+.base_container {
     background-color: #111;
     padding-top: 30px;
     width: 100%;
@@ -20,7 +20,7 @@ h1 {
     margin-right: 20px;
 }
 
-.Bar {
+.base_menu_bar {
     text-align: left;
     list-style-type: none;
     margin: 0;
@@ -28,11 +28,11 @@ h1 {
     overflow: hidden;
 }
 
-.bar_line{
+.base_menu_line {
     float: left;
 }
 
-.bar_line a{
+.base_menu_line a {
     display: block;
     color: white;
     text-align: center;
@@ -41,11 +41,11 @@ h1 {
     font-size: 25px;
 }
 
-.bar_line a:hover {
+.base_menu_line a:hover {
     background-color: #333;
 }
 
-.Content {
+.content {
     background-color: #333;
     background-position: center;
     margin: 0;
@@ -91,7 +91,7 @@ h1 {
     background-color: #333;
 }
 
-.Login {
+.login_container {
     width: 280px;
     position: absolute;
     top: 50%;
@@ -101,7 +101,7 @@ h1 {
     font-family: sans-serif;
 }
 
-.Login h1 {
+.login_container h1 {
     float: top;
     font-size: 30px;
     border-bottom: 6px solid #ff9900;
@@ -109,7 +109,7 @@ h1 {
     padding: 2px 2px 2px;
 }
 
-.textLogin {
+.login_text {
     width: 100%;
     overflow: hidden;
     font-size: 30px;
@@ -117,7 +117,7 @@ h1 {
     border-bottom: 1px solid;
 }
 
-.textLogin input {
+.login_text input {
     border: none;
     outline: none;
     background: none;
@@ -125,7 +125,7 @@ h1 {
     color: white;
 }
 
-.submitLogin {
+.login_submit {
     background-color: #2eb82e;
     border: none;
     color: white;
@@ -139,11 +139,11 @@ h1 {
     margin-top: 10px;
 }
 
-.submitLogin:hover {
+.login_submit:hover {
     background-color: #ff9900;
 }
 
-.regFields {
+.register_container {
     width: 280px;
     margin-left: 20px;
     color: #2eb82e;
@@ -151,7 +151,7 @@ h1 {
     background-color: #333333;
 }
 
-.regFields h1 {
+.register_container h1 {
     float: top;
     font-size: 30px;
     border-bottom: 6px solid #ff9900;
@@ -160,7 +160,7 @@ h1 {
 
 }
 
-.textReg {
+.register_text {
     width: 100%;
     overflow: hidden;
     font-size: 30px;
@@ -168,7 +168,7 @@ h1 {
     border-bottom: 1px solid;
 }
 
-.regFields input {
+.register_container input {
     border: none;
     outline: none;
     background: none;
@@ -183,7 +183,7 @@ h1 {
   cursor: pointer;
 }
 
-.submitReg {
+.register_submit {
    background-color: #2eb82e;
     margin-left: 70px;
     border: none;
@@ -232,7 +232,7 @@ h1 {
     color: #2eb82e;
 }
 
-.info h1 {
+.about_info h1 {
     float: top;
     font-size: 35px;
     border-bottom: 5px solid #ff9900;
@@ -242,14 +242,14 @@ h1 {
     text-align: left;
 }
 
-.info p{
+.about_info p {
     font-size: 16px;
     line-height: 0.8;
     margin-left: 4px;
 
 }
 
-.rules h2 {
+.about_rules h2 {
     float: top;
     font-size: 35px;
     border-bottom: 5px solid #ff9900;
@@ -259,13 +259,13 @@ h1 {
     text-align: left
 }
 
-.rules p {
+.about_rules p {
    font-size: 16px;
     line-height: 0.8;
     margin-left: 4px;
 }
 
-.contacts h3{
+.about_contacts h3 {
     float: top;
     font-size: 35px;
     border-bottom: 5px solid #ff9900;
@@ -275,7 +275,7 @@ h1 {
     text-align: center;
 }
 
-.contacts p{
+.about_contacts p {
     font-size: 16px;
     line-height: 0.8;
     margin-left: 4px;

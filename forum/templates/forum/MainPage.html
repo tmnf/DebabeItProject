@@ -2,17 +2,44 @@
 {% extends "forum/Base.html" %}
 
 {% block content %}
-    <div class="mainheader">
-        <h1> Bem vindo ao DebateIt ! </h1>
-        <br>
-    </div>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    <section main_container>
+        <div class="main_header">
+            <h1> Bem vindo ao DebateIt! </h1>
+            <br>
+        </div>
+
+        <div class="main_top">
+            <h2> Top Utilizadores </h2>
+
+            {% for us in top_users %}
+
+                <picture>
+                    <img src="{{ us.forumuser.pic }}" alt="pic.jpg" width="40">
+                </picture>
+
+                <p> {{ us.username }}</p>
             {% endfor %}
-        </ul>
-    {% endif %}
+        </div>
 
+        <div class="main_discs">
+            <h2> Discussões Recentes </h2>
+
+            {% for disc in recent_discs %}
+                <p> {{ disc.title }}</p>
+                <p> {{ disc.descr }}</p>
+                <p> Modo: {{ disc.mode.title }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="main_warnings">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
 {% endblock content %}
