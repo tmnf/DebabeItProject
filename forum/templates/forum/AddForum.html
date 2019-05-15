@@ -1,3 +1,5 @@
+<!-- Discussion Creation Page - Allows the user to create a new discussion -->
+
 {% extends "forum/Base.html" %}
 
 {% block content %}
@@ -20,6 +22,16 @@
                     <option value="{{ default }}"> Normal</option>
                     <option value="{{ debateIt }}"> DebateIt</option>
                 </select>
+            </div>
+
+            <br>
+
+            <p> Preencher apenas se tiver selecionado tipo "DebateIt" </p>
+            <div>
+                <input type="text" name="option1" placeholder="Opção 1"><br>
+            </div>
+            <div>
+                <input type="text" name="option2" placeholder="Opção 2"><br>
             </div>
 
             <input class="submitLogin" type="submit" value="Adicionar Discussão">

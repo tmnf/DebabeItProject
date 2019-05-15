@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import ForumUser, Category, Post, Discussion, DebateMode, Like, ForumRespect
 
-# Register your models here.
+# Models displayed in admin page
 
 admin.site.register(ForumUser)
 admin.site.register(Category)

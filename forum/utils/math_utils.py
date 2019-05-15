@@ -1,9 +1,10 @@
-# Math Functions and Date Utils
+# Math Functions and Date utils
 
 from datetime import date
 
 
-def GetAge(birth):
+# Returns the age of user, given its birthday
+def get_age(birth):
     aux = birth.split('-')
 
     born_year = int(aux[0])

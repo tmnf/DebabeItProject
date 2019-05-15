@@ -1,7 +1,9 @@
+<!-- Base Page File -->
+
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
 
     <meta charset="UTF-8">
@@ -12,7 +14,6 @@
 <body>
 
     <header class="MenuBar">
-
         <picture>
             <img  class="Logo" src="{% static 'forum/logo.png' %}">
         </picture>
@@ -29,13 +30,11 @@
                         <li class="bar_line"><a href="{% url 'register_page' %}"> Registar </a></li>
                     {% else %}
                         <li class="bar_line"><a href="{% url 'profile_page' %}"> Perfil </a></li>
-                        <li class="bar_line"><a href="{% url 'logout' %}"> Logout </a></li>
+                        <li class="bar_line"><a href="{% url 'logout_user' %}"> Logout </a></li>
                     {% endif %}
-
                 </ul>
             </menu>
         </nav>
-
     </header>
 
     <section class="Content">

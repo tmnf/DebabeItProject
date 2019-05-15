@@ -5,12 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
-from forum.Utils import constants
 from forum.models import ForumUser, ForumRespect
+from forum.utils import constants
 
 
 # Logs User In
-def LoginUser(username, password, request):
+def login_user(username, password, request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
@@ -22,17 +22,18 @@ def LoginUser(username, password, request):
 
 
 # Ends User Session
-def Logout(request):
+def logout_user(request):
     try:
         logout(request)
         messages.success(request, "Sessão Terminada Com Sucesso")
         return True
-    except:
+    except Exception as error:
+        print(error)
         return False
 
 
 # Register User Into Database
-def RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
+def register_user(username, first_name, last_name, email, password, age, pic_url, request):
     try:
         us = User.objects.create_user(username, email, password)
         us.first_name = first_name
@@ -47,13 +48,13 @@ def RegisterUser(username, first_name, last_name, email, password, age, pic_url,
         messages.success(request, "Registado Com Sucesso")
 
         return True
-    except:
+    except Exception as error:
+        print(error)
         return False
 
 
 # Storage User's Profile Picture
-
-def UploadPicture(profile_pic):
+def upload_picture(profile_pic):
     fs = FileSystemStorage()
 
     filename = fs.save(profile_pic.name, profile_pic)
@@ -63,8 +64,7 @@ def UploadPicture(profile_pic):
 
 
 # Checks and Updates User Respect
-
-def CheckRespect(user):
+def check_respect(user):
     likes = user.like_set.count()
 
     key = constants.NOVATO
@@ -77,6 +77,8 @@ def CheckRespect(user):
         key = constants.DEBATENTE
     elif likes >= constants.AMADOR_MIN:
         key = constants.AMADOR
+    elif likes >= constants.ENTUSIASTA_MIN:
+        key = constants.ENTUSIASTA
 
     respect_lvl = ForumRespect.objects.get(key=key)
 

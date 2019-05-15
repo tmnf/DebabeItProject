@@ -1,0 +1,26 @@
+<!-- Debate Sign In Page - Allows a user to sign in a DebateIt discussion -->
+
+{% extends 'forum/Base.html' %}
+
+{% block content %}
+
+    <section class="Login">
+        <h1> Discussão: {{ discussion.title }} - Inscrição </h1>
+
+        <form name="input" action="{% url 'forum_signup' %}" method="POST">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="disc" value="{{ discussion.id }}">
+
+            <p> Escolha a sua equipa: </p>
+            {% for option in options %}
+                <input type="radio" name="option" value="{{ option.key }}"> {{ option.title }}
+            {% endfor %}
+
+            <input class="submitLogin" type="submit" value="Inscrever">
+        </form>
+
+    </section>
+
+{% endblock content %}

@@ -1,12 +1,14 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
 
-from forum.Utils.MathUtils import GetAge
-from .LoginHandle import AuthUtils
+from forum.utils.math_utils import get_age
+from .login_manager import auth_utils
 
 
 # User Authentication Page
-def LoginPage(request):
+def login_page(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('forum_home'))
 
@@ -17,7 +19,7 @@ def LoginPage(request):
         password = request.POST['password']
 
         if username != '' and password != '':
-            if AuthUtils.LoginUser(username, password, request):
+            if auth_utils.login_user(username, password, request):
                 return HttpResponseRedirect(reverse('forum_home'))
             else:
                 error = "Informações inválidas ou o utilizador não existe"
@@ -30,7 +32,7 @@ def LoginPage(request):
 
 
 # User Register Page
-def RegisterPage(request):
+def register_page(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('forum_home'))
 
@@ -46,11 +48,12 @@ def RegisterPage(request):
 
         try:
             profile_pic = request.FILES['pic']
-            pic_url = AuthUtils.UploadPicture(profile_pic)
-        except:
+            pic_url = auth_utils.upload_picture(profile_pic)
+        except Exception as error:
+            print(error)
             pic_url = None
 
-        if AuthUtils.RegisterUser(username, first_name, last_name, email, password, age, pic_url, request):
+        if auth_utils.register_user(username, first_name, last_name, email, password, age, pic_url, request):
             return HttpResponseRedirect(reverse('forum_home'))
         else:
             error = "Campos em falta, inválidos ou username já existe"
@@ -58,25 +61,26 @@ def RegisterPage(request):
     context = {
         'error': error
     }
-    return render(request, "login/RegisterPage.html", context);
+    return render(request, "login/RegisterPage.html", context)
 
 
 # Logs User Out
-def logout(request):
-    if request.user.is_authenticated:
-        AuthUtils.Logout(request)
+@login_required
+def logout_user(request):
+    auth_utils.logout_user(request)
     return HttpResponseRedirect(reverse('forum_home'))
 
 
-# User Profile Page
-def profile(request):
-    user = request.user
+# User's Profile Page
+def profile(request, user_id=None):
+    if user_id is None:
+        user = request.user
+    else:
+        user = User.objects.get(id=user_id)
 
-    if user.is_authenticated:
-        context = {
-            'user': user,
-            'user_age': GetAge(user.forumuser.age)
-        }
-        return render(request, 'login/ProfilePage.html', context)
+    context = {
+        'user': user,
+        'user_age': get_age(user.forumuser.age)
+    }
 
-    return HttpResponseRedirect(reverse('forum_home'))
+    return render(request, 'login/ProfilePage.html', context)

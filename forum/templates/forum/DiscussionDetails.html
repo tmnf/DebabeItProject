@@ -1,3 +1,5 @@
+<!-- Discussion Page  -->
+
 {% extends 'forum/Base.html' %}
 
 {% load static %}
@@ -5,47 +7,70 @@
 {% block content %}
 
     <br>
+
     <div class="discussion_container">
+
+        <section>
+            {% if debate %}
+                <label for="team1_prog"> {{ options.first }}: </label>
+                <progress id="team1_prog" max="10" value="{{ team1_likes }}"></progress> {{ team1_likes }} votos
+
+                <br>
+
+                <label for="team2_prog"> {{ options.last }}: </label>
+                <progress id="team2_prog" max="10" value="{{ team2_likes }}"></progress> {{ team2_likes }} votos
+            {% endif %}
+        </section>
+
         <section class="discussion_header">
             <header>
                 <h1 class="disc_head_title">{{ discussion.title }}</h1>
                 <hr>
                 <p class="disc_head_descr">{{ discussion.descr }}</p>
             </header>
+
             <hr>
+
             <footer>
-                <picture class="disc_footer_pic">
-                    <img src="{{ discussion.owner.forumuser.pic }}" alt="profile_pic.jpg" width="55">
-                </picture>
+                <a href="{% url 'profile_page_ext' discussion.owner.id %}">
+                    <picture class="disc_footer_pic">
+                        <img src="{{ discussion.owner.forumuser.pic }}" alt="profile_pic.jpg" width="55">
+                    </picture>
+                </a>
                 <p class="disc_footer_username">{{ discussion.owner.username }}</p>
                 <p class="disc_footer_username">{{ discussion.owner.forumuser.respect }}</p>
             </footer>
-
         </section>
 
         {% for post in posts %}
-
             <section class="post_container">
                 <div>
-                    <picture class="post_pic">
-                        <img src="{{ post.owner.forumuser.pic }}" alt="profile_pic" width="55">
-                    </picture>
+                    <a href="{% url 'profile_page_ext' post.owner.id %}">
+                        <picture class="post_pic">
+                            <img src="{{ post.owner.forumuser.pic }}" alt="profile_pic" width="55">
+                        </picture>
+                    </a>
+
                     <p class="post_username">{{ post.owner.username }} </p>
                     <p> {{ post.owner.forumuser.respect.title }}</p>
                 </div>
+
                 <div>
                     <p class="post_text"> {{ post.text }} </p>
-                    <p class="post_likes"> Likes: {{ post.like_set.count }} </p>
                 </div>
 
-                {% if logged_in %}
-                    <form action="{% url 'forum_like' %}" method="Post">
+
+                <form action="{% url 'forum_like' %}" method="Post">
                         {% csrf_token %}
-                        <button class="like_button" type="submit" value="{{ post.id }}" name="post_id">
+
+                    <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
+
+                    {% if logged_in %}
+                        <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
                             Like
                         </button>
-                    </form>
-                {% endif %}
+                    {% endif %}
+                </form>
 
             </section>
         {% endfor %}
@@ -53,6 +78,7 @@
         {% if logged_in %}
             <form action="{% url 'forum_discussion' discussion.id %}" method="POST">
                 <section>
+                    <hr>
                     <h1> Comentar </h1>
                     <hr>
                     {% csrf_token %}

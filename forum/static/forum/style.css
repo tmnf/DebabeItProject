@@ -1,10 +1,10 @@
 body {
     color: white;
-    margin: 0px;
+    margin: 0;
 }
 
 h1 {
-    margin: 0px;
+    margin: 0;
 }
 
 .MenuBar {
@@ -48,8 +48,7 @@ h1 {
 .Content {
     background-color: #333;
     background-position: center;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
     min-height: 100vh;
     height: fit-content;
 }
@@ -107,7 +106,7 @@ h1 {
     font-size: 30px;
     border-bottom: 6px solid #ff9900;
     margin-bottom: 15px;
-    padding: 2px 2px 2px 0px;
+    padding: 2px 2px 2px;
 }
 
 .textLogin {
@@ -115,7 +114,6 @@ h1 {
     overflow: hidden;
     font-size: 30px;
     margin-bottom: 8px;
-    width: 100%;
     border-bottom: 1px solid;
 }
 
@@ -147,7 +145,6 @@ h1 {
 
 .regFields {
     width: 280px;
-    margin-top: 0px;
     margin-left: 20px;
     color: #2eb82e;
     font-family: sans-serif;
@@ -159,7 +156,7 @@ h1 {
     font-size: 30px;
     border-bottom: 6px solid #ff9900;
     margin-bottom: 15px;
-    padding: 2px 2px 2px 0px;
+    padding: 2px 2px 2px;
 
 }
 
@@ -168,7 +165,6 @@ h1 {
     overflow: hidden;
     font-size: 30px;
     margin-bottom: 8px;
-    width: 100%;
     border-bottom: 1px solid;
 }
 
@@ -243,7 +239,6 @@ h1 {
     margin-bottom: 15px;
     padding: 2px;
     color: #2eb82e;
-    text-align: center;
     text-align: left;
 }
 
@@ -261,7 +256,6 @@ h1 {
     margin-bottom: 15px;
     padding: 2px;
     color: #2eb82e;
-    text-align: center;
     text-align: left
 }
 
@@ -293,8 +287,7 @@ h1 {
 
 }
 
-.mainheader{
-    margin-top: 10px;
+.mainheader h1 {
     font-size: 30px;
     color: #ff9900;
 }
@@ -362,7 +355,7 @@ h1 {
 }
 
 .post_text {
-    padding: 10px 0px 10px 5px;
+    padding: 10px 0 10px 5px;
 }
 
 .post_likes {
@@ -370,11 +363,11 @@ h1 {
     margin-left: 10px;
 }
 
-.like_button {
+#like_button {
     margin-left: 10px;
 }
 
-.like_button:hover {
+#like_button:hover {
     cursor: pointer;
     background-color: #111111;
 }

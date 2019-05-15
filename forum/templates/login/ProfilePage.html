@@ -1,3 +1,5 @@
+<!-- Profile Page - Shows user information -->
+
 {% extends 'forum/Base.html' %}
 
 {% block content %}
@@ -9,10 +11,11 @@
             <picture class="profilepic">
                 <img src="{{ user.forumuser.pic }}" alt="pic.jpg" width="270">
             </picture>
-                <p> Email: {{ user.email }} </p>
-                <p> Idade: {{ user_age }} </p>
+
+            <p> Email: {{ user.email }} </p>
+            <p> Idade: {{ user_age }} </p>
             <p> Nível de Respeito: {{ user.forumuser.respect.title }}</p>
-                <!-- Dá enfase aos likes. -->
+
             <h2> Likes: {{ user.like_set.count }} </h2>
         </section>
     {% endif %}
