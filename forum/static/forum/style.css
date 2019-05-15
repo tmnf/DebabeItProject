@@ -14,7 +14,7 @@ h1 {
     height: 100%;
 }
 
-.Logo{
+.base_logo_pic {
     float: right;
     width: 200px;
     margin-right: 20px;
@@ -51,44 +51,6 @@ h1 {
     margin: 0;
     min-height: 100vh;
     height: fit-content;
-}
-
-.MenuCategories {
-    background-color: #2eb82e;
-    width: fit-content;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-.MenuCategories h1 {
-    font-size: 30px;
-    color: #111111;
-    background-color: #ff9900;
-    display: block;
-    padding: 12px;
-}
-
-.MenuCategories li {
-    display: block;
-    text-align: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #2eb82e;
-}
-
-.MenuCategories li a {
-    display: block;
-    color: white;
-    text-align: left;
-    padding: 5px;
-    text-decoration: none;
-    font-size: 23px;
-}
-
-.MenuCategories li a:hover {
-    background-color: #333;
 }
 
 .login_container {
@@ -197,7 +159,7 @@ h1 {
     display: inline-block;
 }
 
-.profile h1{
+.profile_container h1 {
     float: top;
     font-size: 50px;
     border-bottom: 10px solid #ff9900;
@@ -209,7 +171,7 @@ h1 {
 }
 
 
-.profilepic img {
+.profile_pic img {
     border-radius: 50%;
     margin-top: 15px;
     border-top: 2px #2eb82e;
@@ -218,21 +180,21 @@ h1 {
     margin-right: auto;
 }
 
-.profile p {
+.profile_container p {
     text-align: center;
     font-size: 22px;
 
 
 }
 
-.profile h2 {
+.profile_container h2 {
     text-align: center;
     margin-top: 10px;
     font-size: 30px;
     color: #2eb82e;
 }
 
-.about_info h1 {
+.about_container h1 {
     float: top;
     font-size: 35px;
     border-bottom: 5px solid #ff9900;
@@ -249,30 +211,10 @@ h1 {
 
 }
 
-.about_rules h2 {
-    float: top;
-    font-size: 35px;
-    border-bottom: 5px solid #ff9900;
-    margin-bottom: 15px;
-    padding: 2px;
-    color: #2eb82e;
-    text-align: left
-}
-
 .about_rules p {
    font-size: 16px;
     line-height: 0.8;
     margin-left: 4px;
-}
-
-.about_contacts h3 {
-    float: top;
-    font-size: 35px;
-    border-bottom: 5px solid #ff9900;
-    margin-bottom: 15px;
-    padding: 2px;
-    color: #2eb82e;
-    text-align: center;
 }
 
 .about_contacts p {
@@ -285,11 +227,6 @@ h1 {
     font-size: 20px;
     color: #ff9900;
 
-}
-
-.mainheader h1 {
-    font-size: 30px;
-    color: #ff9900;
 }
 
 .discussion_container {
