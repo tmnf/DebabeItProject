@@ -34,8 +34,13 @@
                 <input type="text" name="option2" placeholder="Opção 2"><br>
             </div>
 
-            <input class="add_discussion_submit" type="submit" value="Adicionar Discussão">
+            <div class="add_discussion_submit">
+                <input type="submit" value="Adicionar Discussão">
+            </div>
         </section>
     </form>
+
+    {% if error %}
+        <div class="form_warnings"><b>{{ error }}</b></div>{% endif %}
 
 {% endblock content %}

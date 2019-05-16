@@ -1,4 +1,5 @@
 # ABOUT PAGE
+
 EMAIL = "debateit@gmail.com"
 CELL_PHONE1 = 926268718
 CELL_PHONE2 = 966630884

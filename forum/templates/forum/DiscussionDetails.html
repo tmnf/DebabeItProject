@@ -11,13 +11,14 @@
 
         <section class="discussion_debatemode">
             {% if debate %}
-                <label for="team1_prog"> {{ options.first }}: </label>
-                <progress id="team1_prog" max="10" value="{{ team1_likes }}"></progress> {{ team1_likes }} votos
+                <label for="team1_prog" class="discussion_label1"> {{ options.first }}: {{ team1_likes }} votos </label>
+                <hr>
+                <progress id="team1_prog" max="10" value="{{ team1_likes }}"></progress>
 
-                <br>
+                <label for="team2_prog" class="discussion_label2"> {{ options.last }}: {{ team2_likes }} votos </label>
+                <hr>
+                <progress id="team2_prog" max="10" value="{{ team2_likes }}"></progress>
 
-                <label for="team2_prog"> {{ options.last }}: </label>
-                <progress id="team2_prog" max="10" value="{{ team2_likes }}"></progress> {{ team2_likes }} votos
             {% endif %}
         </section>
 
@@ -36,8 +37,10 @@
                         <img src="{{ discussion.owner.forumuser.pic }}" alt="profile_pic.jpg" width="55">
                     </picture>
                 </a>
-                <p class="disc_footer_username">{{ discussion.owner.username }}</p>
-                <p class="disc_footer_username">{{ discussion.owner.forumuser.respect }}</p>
+                <div class="disc_owner">
+                    <p class="disc_footer_username">{{ discussion.owner.username }}</p>
+                    <p class="disc_footer_respect">{{ discussion.owner.forumuser.respect }}</p>
+                </div>
             </footer>
         </section>
 
@@ -51,7 +54,7 @@
                     </a>
 
                     <p class="post_username">{{ post.owner.username }} </p>
-                    <p> {{ post.owner.forumuser.respect.title }}</p>
+                    <p class="post_respect"> {{ post.owner.forumuser.respect.title }}</p>
                 </div>
 
                 <div>
@@ -60,13 +63,15 @@
                     <form action="{% url 'forum_like' %}" method="Post">
                         {% csrf_token %}
 
-                        <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
+                        <div class="post_like_zone">
+                            <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
 
-                        {% if logged_in %}
-                            <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
-                                Like
-                            </button>
-                        {% endif %}
+                            {% if logged_in %}
+                                <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
+                                    Like
+                                </button>
+                            {% endif %}
+                        </div>
                     </form>
 
                 </div>
@@ -74,21 +79,22 @@
             </section>
         {% endfor %}
 
-        <section class="discussion_comment">
+        <section>
             {% if logged_in %}
                 <form action="{% url 'forum_discussion' discussion.id %}" method="POST">
-                    <section>
+                    <section class="discussion_comment">
                         <hr>
                         <h1> Comentar </h1>
                         <hr>
                         {% csrf_token %}
 
-                        <div>
+                        <div class="discussion_comment_box">
                             <textarea type="text" name="comment" placeholder="Comentário" cols="50"
                                       rows="10"></textarea><br>
                         </div>
-
-                        <input type="submit" value="Comentar">
+                        <div class="discussion_comment_submit">
+                            <input type="submit" value="Comentar">
+                        </div>
                     </section>
                 </form>
             {% endif %}

@@ -23,6 +23,8 @@ def login_page(request):
                 return HttpResponseRedirect(reverse('forum_home'))
             else:
                 error = "Informações inválidas ou o utilizador não existe"
+        else:
+            error = "Preencha todos os campos!"
 
     context = {
         'error': error
@@ -49,18 +51,19 @@ def register_page(request):
         try:
             profile_pic = request.FILES['pic']
             pic_url = auth_utils.upload_picture(profile_pic)
-        except Exception as error:
-            print(error)
+        except Exception as err:
+            print(err)
             pic_url = None
 
         if auth_utils.register_user(username, first_name, last_name, email, password, age, pic_url, request):
             return HttpResponseRedirect(reverse('forum_home'))
         else:
-            error = "Campos em falta, inválidos ou username já existe"
+            error = "Campos em falta, inválidos ou utilizador já existe"
 
     context = {
         'error': error
     }
+
     return render(request, "login/RegisterPage.html", context)
 
 

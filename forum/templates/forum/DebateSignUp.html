@@ -5,7 +5,7 @@
 {% block content %}
 
     <section class="signup_container">
-        <h1> Discussão: {{ discussion.title }} - Inscrição </h1>
+        <h1> Discussão: <br> {{ discussion.title }} <br> - Inscrição </h1>
 
         <form name="input" action="{% url 'forum_signup' %}" method="POST">
 
@@ -15,11 +15,17 @@
 
             <p> Escolha a sua equipa: </p>
             {% for option in options %}
-                <input type="radio" name="option" value="{{ option.key }}" class="signup_options">
-                {{ option.title }}
+                <div class="signup_options">
+                    <input type="radio" name="option" value="{{ option.key }}">{{ option.title }}
+                </div>
             {% endfor %}
 
-            <input class="signup_submit" type="submit" value="Inscrever">
+            <br>
+
+            <div class="signup_submit">
+                <input type="submit" value="Inscrever">
+            </div>
+
         </form>
 
     </section>

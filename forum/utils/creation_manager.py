@@ -1,6 +1,7 @@
 # This class handles all forum/post creation
 
 import datetime
+import operator
 
 from forum.models import Discussion, Post, Category, DebateMode, DebateOption
 from forum.utils import constants
@@ -36,13 +37,14 @@ def create_post(owner, text, discussion_id):
         return True
 
 
-# Checks if a user is signed in a DebateIt discussion
+# Checks if a user is signed up a DebateIt discussion
 def check_if_signed(user, discussion):
     is_signed = check_if_exists(discussion.team1.all(), user) or check_if_exists(discussion.team2.all(), user)
 
     return is_signed
 
 
+# Checks if a user exists in a team
 def check_if_exists(team, user):
     for x in team:
         if x.id == user.id:
@@ -76,6 +78,24 @@ def generate_context(discussion, purpose, logged_in):
     return context
 
 
+# Checks if all requirements are fulfilled
+def checks_requirements(request):
+    form = request.POST
+    error = False
+    try:
+        if form['title'] == '' or form['descr'] == '' or form['mode'] is None:
+            error = 'Preencha todos os campos!'
+
+        elif int(form['mode']) == constants.DEBATEIT_MODE and (form['option1'] == '' or form['option2'] == ''):
+            error = 'Preencha as opções!'
+
+    except Exception as err:
+        print(err)
+        error = 'Selecione um tipo de debate!'
+
+    return error
+
+
 # Counts how many likes a team has in a DebateIt discussion
 def get_like_count(team, discussion):
     aux = 0
@@ -93,23 +113,24 @@ def get_last_discussions(discussion_list, max_discussions):
     for x in discussion_list:
         if i == max_discussions:
             break
-        res[i] = x
+        res.append(x)
         i += 1
 
     return res
 
 
 # Retrieves top users
-def get_top_users(users_list, max_user):
+def get_top_users(users_list, max_users):
+    aux = {}
     res = []
 
-    i = 0
     for x in users_list:
-        if i == max_user:
+        aux[x] = x.like_set.count()
+
+    i = 0
+    for key, value in sorted(aux.items(), key=operator.itemgetter(1), reverse=True):
+        if i == max_users:
             break
-        res[i] = x
-        i += 1
+        res.append(key)
 
     return res
-
-    return 10

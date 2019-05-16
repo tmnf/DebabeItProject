@@ -7,17 +7,27 @@
     <section class="category_container">
         <h1> {{ category.title }} </h1><br>
 
-        {% for disc in discussions %}
-            <a href="{% url 'forum_discussion' disc.id %}">
-                <button> {{ disc.title }} : {{ disc.descr }} : {{ disc.mode.title }}</button>
-            </a><br>
-        {% endfor %}
-
         {% if logged_in %}
-            <a href="{% url 'forum_add' category.key %}">
-                <button> Adicionar Discussão</button>
-            </a>
+            <div class="category_disc_add">
+                <a href="{% url 'forum_add' category.key %}">
+                    <button> Adicionar Discussão</button>
+                </a>
+            </div>
         {% endif %}
+
+        <div class="category_disc_list">
+            {% for disc in discussions %}
+                <a href="{% url 'forum_discussion' disc.id %}">
+                    <div class="category_row">
+                        <p class="category_disc_title">{{ disc.title }}</p>
+                        <hr>
+                        <p class="category_disc_descr">{{ disc.descr }}</p>
+                        <p class="category_disc_mode">{{ disc.mode.title }}</p>
+                    </div>
+                </a><br>
+            {% endfor %}
+        </div>
+
     </section>
 
 {% endblock content %}

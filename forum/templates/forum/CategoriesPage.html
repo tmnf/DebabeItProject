@@ -1,6 +1,7 @@
 <!-- Categories Page - Shows all categories available -->
-
 {% extends "forum/Base.html" %}
+
+{% load static %}
 
 {% block content %}
     <section class="categories_container">
@@ -9,7 +10,12 @@
         <div class="categories_buttons">
             {% for cat in categories %}
                 <a href="{% url 'forum_category' cat.key %}">
-                    <button> {{ cat.title }} </button>
+                    {% with 'forum/'|add:cat.title|add:'.png' as image %}
+                        <picture class="categories_image">
+                            <img src="{% static image %}" width="380" height="220" alt="cat.png">
+                        </picture>
+                        <p>{{ cat.title }}</p>
+                    {% endwith %}
                 </a>
             {% endfor %}
         </div>

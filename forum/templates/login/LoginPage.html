@@ -21,6 +21,7 @@
             <input class="login_submit" type="submit" value="Login">
         </section>
 
-        <div class="login_warnings">{% if error %}<b>{{ error }}</b>{% endif %}</div>
+        {% if error %}
+            <div class="form_warnings"><b>{{ error }}</b></div>{% endif %}
     </form>
 {% endblock content %}

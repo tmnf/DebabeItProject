@@ -3,43 +3,56 @@
 
 {% block content %}
 
-    <section main_container>
-        <div class="main_header">
-            <h1> Bem vindo ao DebateIt! </h1>
-            <br>
-        </div>
+    <section class="main_container">
+
+        {% if messages %}
+            <div class="main_warnings">
+                <ul>
+                    {% for message in messages %}
+                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
         <div class="main_top">
             <h2> Top Utilizadores </h2>
 
+            <hr>
             {% for us in top_users %}
 
-                <picture>
-                    <img src="{{ us.forumuser.pic }}" alt="pic.jpg" width="40">
-                </picture>
+                <a href="{% url 'profile_page_ext' us.id %}">
+                    <picture>
+                        <img src="{{ us.forumuser.pic }}" alt="pic.jpg" width="70">
+                    </picture>
+                </a>
 
-                <p> {{ us.username }}</p>
+                <div class="main_user_info">
+                    <p class="main_username"> {{ us.username }}</p>
+                    <p class="main_respect"> {{ us.forumuser.respect.title }}</p>
+                </div>
+                <hr>
             {% endfor %}
         </div>
 
         <div class="main_discs">
             <h2> Discussões Recentes </h2>
 
+            <hr>
+
             {% for disc in recent_discs %}
-                <p> {{ disc.title }}</p>
-                <p> {{ disc.descr }}</p>
-                <p> Modo: {{ disc.mode.title }}</p>
+                <div class="main_discs_row">
+                    <p class="main_disc_title"> {{ disc.title }}</p>
+                    <p class="main_disc_descr"> {{ disc.descr }}</p>
+                    <p class="main_disc_mode"> {{ disc.mode.title }}</p>
+
+                    <a href="{% url 'forum_discussion' disc.id %}">
+                        <button class="main_disc_button"> Entrar</button>
+                    </a>
+                </div>
+                <hr>
             {% endfor %}
         </div>
 
-        <div class="main_warnings">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
     </section>
 {% endblock content %}
