@@ -59,6 +59,7 @@ def discussion_details(request, discussion_id):
     if request.method == 'POST':
         if request.POST['comment'] != '':
             creation_manager.create_post(request.user, request.POST['comment'], discussion_id)
+            return HttpResponseRedirect(reverse('forum_discussion', args=(discussion_id,)))
 
     logged_in = request.user.is_authenticated
     discussion = Discussion.objects.get(id=discussion_id)
@@ -114,7 +115,7 @@ def attribute_like(request):
     user = post.owner
 
     if request.user != user:
-        like, created = Like.objects.get_or_create(owner=user, post=post)
+        like, created = Like.objects.get_or_create(owner=user, post=post, user=request.user)
 
         if not created:
             like.delete()

@@ -83,5 +83,6 @@ class Post(models.Model):
 # Post/User Like
 class Like(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_liked", null=True, default=None)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     date_pub = models.DateTimeField(auto_now_add=True)

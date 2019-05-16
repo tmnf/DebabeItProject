@@ -569,6 +569,7 @@ h1 {
     float: right;
     margin-right: 10px;
     margin-bottom: 10px;
+    padding-top: 20px;
 }
 
 .disc_footer_pic img {
@@ -577,7 +578,6 @@ h1 {
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    padding-top: 18px;
 }
 
 .disc_footer_pic img:hover {

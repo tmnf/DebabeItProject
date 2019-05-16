@@ -64,13 +64,16 @@
                         {% csrf_token %}
 
                         <div class="post_like_zone">
-                            <label for="like_button" class="post_likes"> Likes: {{ post.like_set.count }} </label>
+                            <p class="post_likes" for="like_button">
 
-                            {% if logged_in %}
-                                <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
-                                    Like
-                                </button>
-                            {% endif %}
+                                Likes: {{ post.like_set.count }}
+
+                                {% if logged_in %}
+                                    <button id="like_button" type="submit" value="{{ post.id }}" name="post_id">
+                                        Like
+                                    </button>
+                                {% endif %}
+                            </p>
                         </div>
                     </form>
 
