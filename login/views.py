@@ -48,17 +48,24 @@ def register_page(request):
         password = request.POST['password']
         age = request.POST['age']
 
-        try:
-            profile_pic = request.FILES['pic']
-            pic_url = auth_utils.upload_picture(profile_pic)
-        except Exception as err:
-            print(err)
-            pic_url = None
+        if username == '' or first_name == '' or last_name == '' or email == '' or password == '' or age == '':
+            error = "Campos em falta!"
 
-        if auth_utils.register_user(username, first_name, last_name, email, password, age, pic_url, request):
-            return HttpResponseRedirect(reverse('forum_home'))
-        else:
-            error = "Campos em falta, inválidos ou utilizador já existe"
+        if not error and len(password) < 8:
+            error = "Password demasiado curta"
+
+        if not error:
+            try:
+                profile_pic = request.FILES['pic']
+                pic_url = auth_utils.upload_picture(profile_pic)
+            except Exception as err:
+                print(err)
+                pic_url = None
+
+            if auth_utils.register_user(username, first_name, last_name, email, password, age, pic_url, request):
+                return HttpResponseRedirect(reverse('forum_home'))
+            else:
+                error = "Campos inválidos ou utilizador já existe"
 
     context = {
         'error': error
