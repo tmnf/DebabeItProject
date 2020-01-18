@@ -15,7 +15,8 @@ def index(request):
 
     context = {
         'recent_discs': recent_discs,
-        'top_users': top_users
+        'top_users': top_users,
+        'active': 'home'
     }
 
     return render(request, "forum/MainPage.html", context)
@@ -24,7 +25,8 @@ def index(request):
 # Categories Page
 def categories_page(request):
     context = {
-        'categories': Category.objects.all()
+        'categories': Category.objects.all(),
+        'active': 'categories'
     }
 
     return render(request, "forum/CategoriesPage.html", context)
@@ -36,6 +38,7 @@ def about_page(request):
         'email': constants.EMAIL,
         'phone1': constants.CELL_PHONE1,
         'phone2': constants.CELL_PHONE2,
+        'active': 'about'
     }
     return render(request, "forum/AboutPage.html", context)
 
@@ -48,7 +51,8 @@ def category_details(request, category_id):
     context = {
         'logged_in': logged_in,
         'category': cat,
-        'discussions': Discussion.objects.filter(category=cat)
+        'discussions': Discussion.objects.filter(category=cat),
+        'active': 'categories'
     }
 
     return render(request, "forum/CategoryDetails.html", context)
@@ -94,7 +98,7 @@ def add_discussion(request, category_id):
                                                              form['option1'], form['option2'])
             else:
                 success = creation_manager.create_discussion(form['title'], form['descr'],
-                                                         request.user, category_id, form['mode'])
+                                                             request.user, category_id, form['mode'])
 
             if success:
                 return HttpResponseRedirect(reverse('forum_category', args=category_id))
@@ -107,6 +111,7 @@ def add_discussion(request, category_id):
     }
 
     return render(request, 'forum/AddDiscussion.html', context)
+
 
 # Like Input Handle
 @login_required

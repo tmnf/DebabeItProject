@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <title> DebateIt </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'forum/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'forum/style.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'forum/icon.png' %}"/>
 
 </head>
@@ -21,30 +21,44 @@
 <header class="base_container">
     <picture class="base_logo">
         <img class="base_logo_pic" src="{% static 'forum/logo.png' %}">
-        </picture>
+    </picture>
 
     <nav class="base_menu">
-            <menu>
-                <ul class="base_menu_bar">
-                    <li class="base_menu_line"><a href="{% url 'forum_home' %}"> Inicio </a></li>
-                    <li class="base_menu_line"><a href="{% url 'forum_categories' %}"> Categorias </a></li>
-                    <li class="base_menu_line"><a href="{% url 'forum_about' %}"> Sobre </a></li>
+        <menu>
+            <ul class="base_menu_bar">
+                <li {% if active == 'home' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                    <a href="{% url 'forum_home' %}"> Inicio </a>
+                </li>
+                <li {% if active == 'categories' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                    <a href="{% url 'forum_categories' %}"> Categorias </a>
+                </li>
+                <li {% if active == 'about' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                    <a href="{% url 'forum_about' %}"> Sobre </a>
+                </li>
 
-                    {% if not request.user.is_authenticated %}
-                        <li class="base_menu_line"><a href="{% url 'login_page' %}"> Login </a></li>
-                        <li class="base_menu_line"><a href="{% url 'register_page' %}"> Registar </a></li>
-                    {% else %}
-                        <li class="base_menu_line"><a href="{% url 'profile_page' %}"> Perfil </a></li>
-                        <li class="base_menu_line"><a href="{% url 'logout_user' %}"> Logout </a></li>
-                    {% endif %}
-                </ul>
-            </menu>
-        </nav>
-    </header>
+                {% if not request.user.is_authenticated %}
+                    <li {% if active == 'login' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                        <a href="{% url 'login_page' %}"> Login </a>
+                    </li>
+
+                    <li {% if active == 'register' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                        <a href="{% url 'register_page' %}"> Registar </a>
+                    </li>
+                {% else %}
+                    <li {% if active == 'profile' %} class="active" {% else %} class="base_menu_line" {% endif %}>
+                        <a href="{% url 'profile_page' %}"> Perfil </a>
+                    </li>
+
+                    <li class="base_menu_line"><a href="{% url 'logout_user' %}"> Logout </a></li>
+                {% endif %}
+            </ul>
+        </menu>
+    </nav>
+</header>
 
 <section class="content">
-        {% block content %}{% endblock content %}
-    </section>
+    {% block content %}{% endblock content %}
+</section>
 
 </body>
 </html>

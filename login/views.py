@@ -27,9 +27,9 @@ def login_page(request):
             error = "Preencha todos os campos!"
 
     context = {
-        'error': error
+        'error': error,
+        'active': 'login'
     }
-
     return render(request, "login/LoginPage.html", context)
 
 
@@ -68,7 +68,8 @@ def register_page(request):
                 error = "Campos inválidos ou utilizador já existe"
 
     context = {
-        'error': error
+        'error': error,
+        'active': 'register'
     }
 
     return render(request, "login/RegisterPage.html", context)
@@ -90,7 +91,8 @@ def profile(request, user_id=None):
 
     context = {
         'user': user,
-        'user_age': get_age(user.forumuser.age)
+        'user_age': get_age(user.forumuser.age),
+        'active': 'profile'
     }
 
     return render(request, 'login/ProfilePage.html', context)
